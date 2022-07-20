@@ -1,6 +1,6 @@
 @extends('layouts.master')
 @section('title')
-    الفواتير المدفوعة
+{{ trans('invoicespaid.title') }}
 @stop
 @section('css')
     <!-- Internal Data table css -->
@@ -18,8 +18,7 @@
     <div class="breadcrumb-header justify-content-between">
         <div class="my-auto">
             <div class="d-flex">
-                <h4 class="content-title mb-0 my-auto">الفواتير</h4><span class="text-muted mt-1 tx-13 mr-2 mb-0">/ الفواتير
-                    المدفوعة
+                <h4 class="content-title mb-0 my-auto">{{ trans('invoicespaid.Invoices')}}</h4><span class="text-muted mt-1 tx-13 mr-2 mb-0">/ {{ trans('invoicespaid.PaidBills')}}
                 </span>
             </div>
         </div>
@@ -33,7 +32,7 @@
         <script>
             window.onload = function() {
                 notif({
-                    msg: "تم حذف الفاتورة بنجاح",
+                    msg: "{{ trans('messages.SuccessDelete')}}",
                     type: "success"
                 })
             }
@@ -45,7 +44,7 @@
         <script>
             window.onload = function() {
                 notif({
-                    msg: "تم تحديث حالة الدفع بنجاح",
+                    msg: "{{ trans('messages.SuccessUpdate')}}",
                     type: "success"
                 })
             }
@@ -60,7 +59,7 @@
                 <div class="card-header pb-0">
                     <div class="d-flex justify-content-between">
                         <a href="invoices/create" class="modal-effect btn btn-sm btn-primary" style="color:white"><i
-                                class="fas fa-plus"></i>&nbsp; اضافة فاتورة</a>
+                                class="fas fa-plus"></i>&nbsp; {{ trans('invoicespaid.InvoicesAdd')}}</a>
                     </div>
                 </div>
                 <div class="card-body">
@@ -69,18 +68,18 @@
                             <thead>
                             <tr>
                                 <th class="border-bottom-0">#</th>
-                                <th class="border-bottom-0">رقم الفاتورة</th>
-                                <th class="border-bottom-0">تاريخ القاتورة</th>
-                                <th class="border-bottom-0">تاريخ الاستحقاق</th>
-                                <th class="border-bottom-0">المنتج</th>
-                                <th class="border-bottom-0">القسم</th>
-                                <th class="border-bottom-0">الخصم</th>
-                                <th class="border-bottom-0">نسبة الضريبة</th>
-                                <th class="border-bottom-0">قيمة الضريبة</th>
-                                <th class="border-bottom-0">الاجمالي</th>
-                                <th class="border-bottom-0">الحالة</th>
-                                <th class="border-bottom-0">ملاحظات</th>
-                                <th class="border-bottom-0">العمليات</th>
+                                <th class="border-bottom-0">{{ trans('invoicespaid.InvoicesNumber')}}</th>
+                                <th class="border-bottom-0">{{ trans('invoicespaid.InvoicesNumberTime')}} </th>
+                                <th class="border-bottom-0">{{ trans('invoicespaid.InvoicesNumberPaidBills')}}</th>
+                                <th class="border-bottom-0">{{ trans('invoicespaid.Products')}}</th>
+                                <th class="border-bottom-0">{{ trans('invoicespaid.Sections')}}</th>
+                                <th class="border-bottom-0">{{ trans('invoicespaid.Discount')}}</th>
+                                <th class="border-bottom-0">{{ trans('invoicespaid.Rate_VAT')}}</th>
+                                <th class="border-bottom-0">{{ trans('invoicespaid.Rate_VAT')}}</th>
+                                <th class="border-bottom-0">{{ trans('invoicespaid.Total')}}</th>
+                                <th class="border-bottom-0">{{ trans('invoicespaid.Value_Status')}}</th>
+                                <th class="border-bottom-0">{{ trans('invoicespaid.note')}}</th>
+                                <th class="border-bottom-0">{{ trans('invoicespaid.Processes')}}</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -120,28 +119,27 @@
                                         <div class="dropdown">
                                             <button aria-expanded="false" aria-haspopup="true"
                                                     class="btn ripple btn-primary btn-sm" data-toggle="dropdown"
-                                                    type="button">العمليات<i class="fas fa-caret-down ml-1"></i></button>
+                                                    type="button">{{ trans('invoicespaid.Processes')}}<i class="fas fa-caret-down ml-1"></i></button>
                                             <div class="dropdown-menu tx-13">
                                                 <a class="dropdown-item"
-                                                   href=" {{ url('edit_invoice') }}/{{ $invoice->id }}">تعديل
-                                                    الفاتورة</a>
+                                                   href=" {{ url('edit/') }}/{{ $invoice->id }}"><i class="text-primary las la-pen"></i>{{ trans('invoicespaid.Edit')}}</a>
 
                                                 <a class="dropdown-item" href="#" data-invoice_id="{{ $invoice->id }}"
                                                    data-toggle="modal" data-target="#delete_invoice"><i
-                                                        class="text-danger fas fa-trash-alt"></i>&nbsp;&nbsp;حذف
-                                                    الفاتورة</a>
+                                                        class="text-danger fas fa-trash-alt"></i>&nbsp;&nbsp;
+                                                        {{ trans('invoicespaid.DeleteInvices')}}</a>
 
                                                 <a class="dropdown-item"
                                                    href="{{ URL::route('Status_show', [$invoice->id]) }}"><i
                                                         class=" text-success fas
-                                                                                                                                    fa-money-bill"></i>&nbsp;&nbsp;تغير
-                                                    حالة
-                                                    الدفع</a>
+                                                        fa-money-bill"></i>&nbsp;&nbsp;
+                                                    {{ trans('invoicespaid.ChangePaymentStatus')}}
+                                                    </a>
 
                                                 <a class="dropdown-item" href="#" data-invoice_id="{{ $invoice->id }}"
                                                    data-toggle="modal" data-target="#Transfer_invoice"><i
-                                                        class="text-warning fas fa-exchange-alt"></i>&nbsp;&nbsp;نقل الي
-                                                    الارشيف</a>
+                                                        class="text-warning fas fa-exchange-alt"></i>&nbsp;&nbsp;{{ trans('invoicespaid.Archived')}}
+                                                    </a>
 
                                             </div>
                                         </div>
@@ -165,7 +163,7 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">حذف الفاتورة</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">{{ trans('invoicespaid.DeleteInvices')}}</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -174,12 +172,12 @@
                     {{ csrf_field() }}
                 </div>
                 <div class="modal-body">
-                    هل انت متاكد من عملية الحذف ؟
+                    {{ trans('invoicespaid.SuccessDelete')}} ؟
                     <input type="hidden" name="invoice_id" id="invoice_id" value="">
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">الغاء</button>
-                    <button type="submit" class="btn btn-danger">تاكيد</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">{{ trans('invoicespaid.cancel')}}</button>
+                    <button type="submit" class="btn btn-danger">{{ trans('invoicespaid.submit')}}</button>
                 </div>
                 </form>
             </div>
@@ -193,7 +191,7 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">ارشفة الفاتورة</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">{{ trans('invoicespaid.Archived')}} </h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -202,14 +200,14 @@
                     {{ csrf_field() }}
                 </div>
                 <div class="modal-body">
-                    هل انت متاكد من عملية الارشفة ؟
+                    {{ trans('invoicespaid.SuccessArchived')}}  ؟
                     <input type="hidden" name="invoice_id" id="invoice_id" value="">
                     <input type="hidden" name="id_page" id="id_page" value="2">
 
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">الغاء</button>
-                    <button type="submit" class="btn btn-success">تاكيد</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">{{ trans('invoicespaid.cancel')}}</button>
+                    <button type="submit" class="btn btn-success">{{ trans('invoicespaid.submit')}}</button>
                 </div>
                 </form>
             </div>

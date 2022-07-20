@@ -14,10 +14,9 @@ return [
     */
 
 
-    'BillingSoftware'=> 'برنامج الفواتير',
+    'title'=> 'الفواتير المدفوعة',
     'Invoices'=> 'الفواتير ',
     'PaidBills'=> 'فواتير مدفوعة',
-    'UnPaid'=> ' فواتير غير مدفوعة ',
     'BillingList'=> 'قائمة الفواتير',
     'InvoicesAdd'=> 'اضافة فاتورة',
     'UpEXCEL'=> 'تصدير اكسيل',
@@ -29,7 +28,7 @@ return [
     'Discount'=> 'الخصم',
     'Rate_VAT'=> 'نسبة ضريبة القيمة المضاعفة ',
     'note'=> 'ملاحظات',
-    'Sections'=>'الاقسام',
+    'Sections'=>'القسم',
     'Value_VAT'=>'قيمة ضريبة القيمة المضافة',
     'Value_Status'=>'الحالة',
     'Total'=>'الاجمالي',
@@ -38,7 +37,7 @@ return [
     'ChangePaymentStatus'=>'تغيير حالة الدفع',
     'Print'=>'طباعة ',
     'Archived'=>'نقل الي الارشيف ',
-    'DeleteInvices'=>'حذف الفاتورة  ',
+    'DeleteInvices'=>'حذف   ',
     'ArchivedUp'=>'ارشفة الفاتورة ',
     'Products'=>'المنتج ',
     'Processes'=>'العمليات ',

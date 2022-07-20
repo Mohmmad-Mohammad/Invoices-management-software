@@ -149,7 +149,7 @@
                                             <?php $number = 0?>
                                             @isset($invoices)
                                             @foreach($invoices as $invoice )
-                                              <?php $number++ ?>
+                                            <?php $number++ ?>
                                             <tr>
                                                 <td>{{$number}}</td>
                                                 <td>{{$invoice -> invoice_number}}</td>
@@ -181,7 +181,7 @@
                                                         <div class="dropdown-menu tx-13">
 
                                                         <a  style="margin: 2px;" href="{{url('/details',$invoice -> id)}}"
-                                                             class="dropdown-item text-success">{{ trans('invoices.details')}} <i class="text-success las la-eye" ></i></a>
+                                                            class="dropdown-item text-success">{{ trans('invoices.details')}} <i class="text-success las la-eye" ></i></a>
 
                                                         @can('Permission.InvoiceEdit')
                                                         <a  style="margin: 2px;" href="{{route('edit',$invoice -> id)}}"
@@ -248,12 +248,12 @@
                     {{csrf_field()}}
                 </div>
                 <div class="modal-body">
-                       ؟ {{ trans('invoices.SuccessDelete') }}
+                    {{ trans('invoices.SuccessDelete') }} ?
                     <input type="hidden" name="invoice_id" id="invoice_id" value="">
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">الغاء</button>
-                    <button type="submit" class="btn btn-danger">تاكيد</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">{{ trans('invoices.cancel')}}</button>
+                    <button type="submit" class="btn btn-danger">{{ trans('invoices.submit')}}</button>
                 </div>
                 </form>
             </div>
@@ -274,13 +274,13 @@
                     {{ csrf_field() }}
                 </div>
                 <div class="modal-body">
-                     ؟ {{ trans('invoices.SuccessArchived') }}
+                     {{ trans('invoices.SuccessArchived') }} ?
                     <input type="hidden" name="invoice_id" id="invoice_id" value="">
                     <input type="hidden" name="id_page" id="id_page" value="2">
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">الغاء</button>
-                    <button type="submit" class="btn btn-success">تاكيد</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">{{ trans('invoices.cancel')}}</button>
+                    <button type="submit" class="btn btn-success">{{ trans('invoices.{{ trans('invoices.cancel')}}')}}</button>
                 </div>
                 </form>
             </div>
