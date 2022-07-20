@@ -1,6 +1,6 @@
 @extends('layouts.master')
 @section('title')
-    لوحة التحكم - برنامج الفواتير
+{{ trans('home.title') }}
 @stop
 @section('css')
     <!--  Owl-carousel css-->
@@ -13,27 +13,27 @@
     <div class="breadcrumb-header justify-content-between">
         <div class="left-content">
             <div>
-                <h2 class="main-content-title tx-24 mg-b-1 mg-b-lg-1">اهلاا, مرحبًا بعودتك!</h2>
+                <h2 class="main-content-title tx-24 mg-b-1 mg-b-lg-1">{{ trans('home.main-title') }}</h2>
                 <p class="mg-b-0"></p>
             </div>
         </div>
         <div class="main-dashboard-header-right">
             <div>
-                <label class="tx-13">تقييم</label>
+                <label class="tx-13">{{ trans('home.evaluation') }}</label>
                 <div class="main-star">
                     <i class="typcn typcn-star active"></i> <i class="typcn typcn-star active"></i> <i class="typcn typcn-star active"></i> <i class="typcn typcn-star active"></i> <i class="typcn typcn-star"></i> <span>(14,873)</span>
                 </div>
             </div>
             <div>
-                <label class="tx-13">عمولة الفواتير</label>
+                <label class="tx-13">{{ trans('home.Amount-Commission') }}</label>
                 <h5>${{number_format(\App\Models\Invoice::sum('Amount_Commission'))}}</h5>
             </div>
             <div>
-                <label class="tx-13">خصم الفواتير</label>
+                <label class="tx-13">{{ trans('home.Discount') }}</label>
                 <h5>${{number_format(\App\Models\Invoice::sum('Discount'))}}</h5>
             </div>
             <div>
-                <label class="tx-13">المستخدمين</label>
+                <label class="tx-13">{{ trans('home.users') }}</label>
                 <h5>{{Auth::user()->count()}}</h5>
             </div>
         </div>
@@ -47,7 +47,7 @@
             <div class="card overflow-hidden sales-card bg-primary-gradient">
                 <div class="pl-3 pt-3 pr-3 pb-2 pt-0">
                     <div class="">
-                        <h6 class="mb-3 tx-12 text-white">اجمالي الفواتير</h6>
+                        <h6 class="mb-3 tx-12 text-white">{{ trans('home.TotalBills') }}</h6>
                     </div>
                     <div class="pb-0 mt-0">
                         <div class="d-flex">
@@ -56,7 +56,7 @@
                                 ${{number_format(\App\Models\Invoice::sum('Total'),2)}}
                                 </h4>
                                 <h5 class="mb-0 tx-12 text-white op-7">
-                                عدد الفواتير
+                                {{ trans('home.NumberInvoices') }}
                                 </h5>
                                 <p class="mb-0 tx-12 text-white op-7"> {{\App\Models\Invoice::count()}}</p>
                             </div>
@@ -74,14 +74,14 @@
             <div class="card overflow-hidden sales-card bg-danger-gradient">
                 <div class="pl-3 pt-3 pr-3 pb-2 pt-0">
                     <div class="">
-                        <h6 class="mb-3 tx-12 text-white">الفواتير الغير مدفوعة</h6>
+                        <h6 class="mb-3 tx-12 text-white">{{ trans('home.UnpaidBills') }}</h6>
                     </div>
                     <div class="pb-0 mt-0">
                         <div class="d-flex">
                             <div class="">
                                 <h4 class="tx-20 font-weight-bold mb-1 text-white">  ${{number_format(\App\Models\Invoice::where('status','غير مدفوعة')->sum('Total'),2)}}</h4>
                                 <h5 class="mb-0 tx-12 text-white op-7">
-                                    عدد الفواتير الغير مدفوعة
+                                {{ trans('home.Unpaid') }}
                                 </h5>
                                 <p class="mb-0 tx-12 text-white op-7">{{\App\Models\Invoice::where('Value_Status',2)->count()}}</p>
                             </div>
@@ -106,14 +106,14 @@
             <div class="card overflow-hidden sales-card bg-success-gradient">
                 <div class="pl-3 pt-3 pr-3 pb-2 pt-0">
                     <div class="">
-                        <h6 class="mb-3 tx-12 text-white">الفواتير المدفوعة</h6>
+                        <h6 class="mb-3 tx-12 text-white">{{ trans('home.paid') }}</h6>
                     </div>
                     <div class="pb-0 mt-0">
                         <div class="d-flex">
                             <div class="">
                                 <h4 class="tx-20 font-weight-bold mb-1 text-white">${{number_format(\App\Models\Invoice::where('Value_Status',1)->sum('Total'),2)}}</h4>
                                 <h5 class="mb-0 tx-12 text-white op-7">
-                                    عدد الفواتير مدفوعة
+                                        {{ trans('home.NumberUnpaidBills') }}
                                 </h5>
                                 <p class="mb-0 tx-12 text-white op-7">{{\App\Models\Invoice::where('Value_Status',1)->count()}}</p>
                             </div>
@@ -133,14 +133,14 @@
             <div class="card overflow-hidden sales-card bg-warning-gradient">
                 <div class="pl-3 pt-3 pr-3 pb-2 pt-0">
                     <div class="">
-                        <h6 class="mb-3 tx-12 text-white">الفواتير المدفوعة جزئيا</h6>
+                        <h6 class="mb-3 tx-12 text-white">{{ trans('home.PartiallyPaid') }}</h6>
                     </div>
                     <div class="pb-0 mt-0">
                         <div class="d-flex">
                             <div class="">
                                 <h4 class="tx-20 font-weight-bold mb-1 text-white">${{number_format(\App\Models\Invoice::where('Value_Status',3)->sum('Total'),2)}}</h4>
                                 <h5 class="mb-0 tx-12 text-white op-7">
-                                    الفواتير المدفوعة جزئيا
+                                    {{ trans('home.PartiallyPaid') }}
                                 </h5>
                                 <p class="mb-0 tx-12 text-white op-7">{{\App\Models\Invoice::where('Value_Status',3)->count()}}</p>
                             </div>
@@ -167,7 +167,7 @@
             <div class="card">
                 <div class="card-header bg-transparent pd-b-0 pd-t-20 bd-b-0">
                     <div class="d-flex justify-content-between">
-                        <h4 class="card-title mb-0">نسبة احصائية الفواتير</h4>
+                        <h4 class="card-title mb-0">{{ trans('home.InvoiceStatisticalRatio') }}</h4>
                         <i class="mdi mdi-dots-horizontal text-gray"></i>
                     </div>
 
@@ -181,7 +181,7 @@
         </div>
         <div class="col-lg-12 col-xl-5">
             <div class="card card-dashboard-map-one">
-                <label class="main-content-label">نسبة احصائية الفواتير</label>
+                <label class="main-content-label">{{ trans('home.InvoiceStatisticalRatio') }}  </label>
                 {{-- <span class="d-block mg-b-20 text-muted tx-12"></span> --}}
                 <div class="card-body" style="width:100%";>
                     {!! $chartjs->render() !!}

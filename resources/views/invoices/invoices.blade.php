@@ -1,6 +1,6 @@
 @extends('layouts.master')
 @section('title')
-    قائمة الفواتير
+    {{ trans('invoices.BillingList') }}
 @stop
 @section('css')
     <!-- Internal Data table css -->
@@ -18,7 +18,7 @@
 				<div class="breadcrumb-header justify-content-between">
 					<div class="my-auto">
 						<div class="d-flex">
-							<h4 class="content-title mb-0 my-auto">الفواتير</h4><span class="text-muted mt-1 tx-13 mr-2 mb-0">/ قائمة الفواتير </span>
+							<h4 class="content-title mb-0 my-auto">    {{ trans('invoices.Invoices') }}</h4><span class="text-muted mt-1 tx-13 mr-2 mb-0">/ {{ trans('invoices.BillingList') }}  </span>
 						</div>
 					</div>
 
@@ -66,7 +66,7 @@
                         <script>
                             window.onload = function() {
                                 notif({
-                                    msg: "تم حذف الفاتورة بنجاح",
+                                    msg: "{{trans('messages.SuccessDelete')}}",
                                     type: "success"
                                 })
                             }
@@ -78,7 +78,7 @@
                         <script>
                             window.onload = function() {
                                 notif({
-                                    msg: "تم استعادة الفاتورة بنجاح",
+                                    msg: "{{trans('messages.SuccessRestored')}}",
                                     type: "success"
                                 })
                             }
@@ -89,7 +89,7 @@
                         <script>
                             window.onload = function() {
                                 notif({
-                                    msg: "تم تحدث حالة الدفع  بنجاح",
+                                    msg: "{{trans('messages.SuccessUpdate')}}",
                                     type: "success"
                                 })
                             }
@@ -100,7 +100,7 @@
                         <script>
                             window.onload = function() {
                                 notif({
-                                    msg: "تم أرشفة الفاتورة بنجاح",
+                                    msg: "{{trans('messages.SuccessArchive')}}",
                                     type: "success"
                                 })
                             }
@@ -113,11 +113,11 @@
                                 <div class="card-header pb-0">
                                     @can('Permission.AddInvoice')
                                     <a href="invoices/create" class="modal-effect btn btn-sm btn-success" style="color:white"><i
-                                            class="fas fa-plus"></i>&nbsp; اضافة فاتورة</a>
+                                            class="fas fa-plus"></i>&nbsp; {{ trans('invoices.InvoicesAdd') }}</a>
                                     @endcan
                                     @can('Permission.UpEXCEL')
                                     <a class="modal-effect btn btn-sm btn-primary" href="{{ url('export_invoices') }}"
-                                    style="color:white"><i class="fas fa-file-download"></i>&nbsp;تصدير اكسيل</a>
+                                    style="color:white"><i class="fas fa-file-download"></i>&nbsp;{{ trans('invoices.UpEXCEL')}}</a>
                                         @endcan
 
                                 </div>
@@ -127,20 +127,20 @@
                                             <thead>
                                             <tr>
                                                 <th class="border-bottom-0">#</th>
-                                                <th class="border-bottom-0">رقم الفاتورة</th>
-                                                <th class="border-bottom-0">تاريخ الفاتورة</th>
-                                                <th class="border-bottom-0">تاريخ الاستحقاق</th>
-                                                <th class="border-bottom-0">القسم</th>
-                                                <th class="border-bottom-0">المنتج</th>
-                                                <th class="border-bottom-0">مبلغ التحصيل</th>
-                                                <th class="border-bottom-0">قيمة العمولة</th>
-                                                <th class="border-bottom-0">الخصم</th>
-                                                <th class="border-bottom-0">نسبة ضريبة القيمة المضاعفة</th>
-                                                <th class="border-bottom-0">ملاحظات</th>
-                                                <th class="border-bottom-0">قيمة ضريبة القيمة المضافة</th>
-                                                <th class="border-bottom-0">الحالة</th>
-                                                <th class="border-bottom-0">الاجمالي</th>
-                                                <th class="border-bottom-0">العمليات</th>
+                                                <th class="border-bottom-0">{{ trans('invoices.InvoicesNumber')}}</th>
+                                                <th class="border-bottom-0">{{ trans('invoices.InvoicesNumberTime')}}</th>
+                                                <th class="border-bottom-0">{{ trans('invoices.InvoicesNumberPaidBills')}}</th>
+                                                <th class="border-bottom-0">{{ trans('invoices.Sections')}}</th>
+                                                <th class="border-bottom-0">{{ trans('invoices.Products')}}</th>
+                                                <th class="border-bottom-0">{{ trans('invoices.AmountCollection')}}</th>
+                                                <th class="border-bottom-0">{{ trans('invoices.AmountCommission')}}</th>
+                                                <th class="border-bottom-0">{{ trans('invoices.Discount')}}</th>
+                                                <th class="border-bottom-0">{{ trans('invoices.Rate_VAT')}}</th>
+                                                <th class="border-bottom-0">{{ trans('invoices.note')}}</th>
+                                                <th class="border-bottom-0">{{ trans('invoices.Value_VAT')}}</th>
+                                                <th class="border-bottom-0">{{ trans('invoices.Value_Status')}}</th>
+                                                <th class="border-bottom-0">{{ trans('invoices.Total')}}</th>
+                                                <th class="border-bottom-0">{{ trans('invoices.Processes')}}</th>
                                             </tr>
                                             </thead>
                                             <tbody>
@@ -177,15 +177,15 @@
                                                     <div class="dropdown">
                                                     <button aria-expanded="false" aria-haspopup="true"
                                                             class="btn ripple btn-primary btn-sm" data-toggle="dropdown"
-                                                            type="button">العمليات<i class="fas fa-caret-down ml-1"></i></button>
+                                                            type="button">{{ trans('invoices.Processes')}}<i class="fas fa-caret-down ml-1"></i></button>
                                                         <div class="dropdown-menu tx-13">
 
                                                         <a  style="margin: 2px;" href="{{url('/details',$invoice -> id)}}"
-                                                             class="dropdown-item text-success">تفاصيل <i class="text-success las la-eye" ></i></a>
+                                                             class="dropdown-item text-success">{{ trans('invoices.details')}} <i class="text-success las la-eye" ></i></a>
 
                                                         @can('Permission.InvoiceEdit')
                                                         <a  style="margin: 2px;" href="{{route('edit',$invoice -> id)}}"
-                                                             class="dropdown-item text-primary"  >تعديل <i class="text-primary las la-pen"></i></a>
+                                                             class="dropdown-item text-primary"  >{{ trans('invoices.Edit')}} <i class="text-primary las la-pen"></i></a>
                                                         @endcan
                                                         @can('Permission.InvoiceDelete')
 
@@ -194,7 +194,7 @@
 
                                                             @can('Permission.PaymentStatusChange')
                                                                 <a class="dropdown-item"
-                                                                   href="{{ URL::route('Status_show', [$invoice->id]) }}">    تغير حالة الدفع
+                                                                   href="{{ URL::route('Status_show', [$invoice->id]) }}">    {{ trans('invoices.ChangePaymentStatus') }}
                                                                     <i
                                                                         class=" text-success fas
                                                                         fa-money-bill"></i>&nbsp;&nbsp;
@@ -202,16 +202,15 @@
                                                             @endcan
                                                             @can('Permission.ArchiveInvoice')
                                                             <a class="dropdown-item" href="#" data-invoice_id="{{ $invoice->id }}"
-                                                               data-toggle="modal" data-target="#Transfer_invoice"> نقل الي الارشيف <i
+                                                               data-toggle="modal" data-target="#Transfer_invoice">{{ trans('invoices.Archived') }}<i
                                                                     class="text-warning fas fa-exchange-alt"> </i>&nbsp;&nbsp;</a>
                                                             @endcan
                                                             @can('Permission.InvoicePrinting')
-                                                            <a class="dropdown-item" href="Print_invoice/{{ $invoice->id }}">طباعة
+                                                            <a class="dropdown-item" href="Print_invoice/{{ $invoice->id }}">{{ trans('invoices.Print') }}
                                                                 الفاتورة<i
                                                                     class="text-success fas fa-print"></i>&nbsp;&nbsp;
                                                             </a>
                                                             @endcan
-
                                                     </div>
 
                                                 </td>
@@ -240,7 +239,7 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">حذف الفاتورة</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">{{ trans('invoices.DeleteInvices') }} </h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -249,7 +248,7 @@
                     {{csrf_field()}}
                 </div>
                 <div class="modal-body">
-                       هل انت متاكد من عملية الحذف ؟
+                       ؟ {{ trans('invoices.SuccessDelete') }}
                     <input type="hidden" name="invoice_id" id="invoice_id" value="">
                 </div>
                 <div class="modal-footer">
@@ -266,7 +265,7 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">ارشفة الفاتورة</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">{{ trans('invoices.ArchivedUp') }} </h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -275,7 +274,7 @@
                     {{ csrf_field() }}
                 </div>
                 <div class="modal-body">
-                    هل انت متاكد من عملية الارشفة ؟
+                     ؟ {{ trans('invoices.SuccessArchived') }}
                     <input type="hidden" name="invoice_id" id="invoice_id" value="">
                     <input type="hidden" name="id_page" id="id_page" value="2">
                 </div>
