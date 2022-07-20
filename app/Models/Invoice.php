@@ -4,7 +4,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Model;
 
-class Invoices extends Model
+class Invoice extends Model
 {
     use SoftDeletes;
     protected $table = "invoices";
@@ -29,7 +29,7 @@ class Invoices extends Model
     protected $dates = ['deleted_at'];
 
     protected function section(){
-        return $this-> belongsTo('App\Models\Sections','section_id','id');
+        return $this-> belongsTo('App\Models\Section','section_id','id');
         }
 
         public function scopeSelectExcel($query){

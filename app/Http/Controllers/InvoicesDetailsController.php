@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Invoices;
-use App\Models\Invoices_attachments;
-use App\Models\Invoices_details;
+use App\Models\Invoice;
+use App\Models\Invoices_attachment;
+use App\Models\Invoices_detail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -17,14 +17,15 @@ class InvoicesDetailsController extends Controller
      */
     public function index($id)
     {
-        $invoices = Invoices::where('id',$id)->first();
-        $details = Invoices_details::where('id_Invoice',$id)->get();
-        $attachments = Invoices_attachments::where('invoice_id',$id)->get();
+        $invoices = Invoice::where('id',$id)->first();
+        $details = Invoices_detail::where('id_Invoice',$id)->get();
+        $attachments = Invoices_attachment::where('invoice_id',$id)->get();
         return view('invoices.invoicesDetails',compact('invoices','attachments','details'));
     }
 
 
-    public function Openfile($invoice_number,$file_name){
+    public function Openfile($invoice_number,$file_name)
+    {
         $files = Storage::disk('attachments')->getDriver()->getAdapter()->applyPathPrefix($invoice_number.'/'.$file_name);
         return response()->file($files);
     }
@@ -61,7 +62,7 @@ class InvoicesDetailsController extends Controller
      * @param  \App\Models\Invoices_details  $invoices_details
      * @return \Illuminate\Http\Response
      */
-    public function show(Invoices_details $invoices_details)
+    public function show(Invoices_detail $invoices_details)
     {
         //
     }
@@ -72,7 +73,7 @@ class InvoicesDetailsController extends Controller
      * @param  \App\Models\Invoices_details  $invoices_details
      * @return \Illuminate\Http\Response
      */
-    public function edit(Invoices_details $invoices_details)
+    public function edit(Invoices_detail $invoices_details)
     {
         //
     }
@@ -84,7 +85,7 @@ class InvoicesDetailsController extends Controller
      * @param  \App\Models\Invoices_details  $invoices_details
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Invoices_details $invoices_details)
+    public function update(Request $request, Invoices_detail $invoices_details)
     {
         //
     }
@@ -98,7 +99,7 @@ class InvoicesDetailsController extends Controller
     public function destroy(Request $request)
     {
         try {
-            $invoices = Invoices_attachments::findOrFail($request->id_file);
+            $invoices = Invoices_attachment::findOrFail($request->id_file);
             $invoices->delete();
             Storage::disk('attachments')->delete($request->invoice_number.'/'.$request->file_name);
             session()->flash('delete', 'تم حذف المرفق بنجاح');

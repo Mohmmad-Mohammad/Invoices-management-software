@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Invoices_attachments;
+use App\Models\Invoices_attachment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -44,7 +44,7 @@ class InvoicesAttachmentsController extends Controller
         ]);
         $image = $request->file('file_name');
         $file_name = $image->getClientOriginalName();
-         Invoices_attachments::create([
+            Invoices_attachment::create([
             'file_name'=>$file_name,
             'invoice_number'=>$request->invoice_number,
             'invoice_id'=>$request->invoice_id,
@@ -65,7 +65,7 @@ class InvoicesAttachmentsController extends Controller
      * @param  \App\Models\Invoices_attachments  $invoices_attachments
      * @return \Illuminate\Http\Response
      */
-    public function show(Invoices_attachments $invoices_attachments)
+    public function show(Invoices_attachment $invoices_attachments)
     {
         //
     }
@@ -76,7 +76,7 @@ class InvoicesAttachmentsController extends Controller
      * @param  \App\Models\Invoices_attachments  $invoices_attachments
      * @return \Illuminate\Http\Response
      */
-    public function edit(Invoices_attachments $invoices_attachments)
+    public function edit(Invoices_attachment $invoices_attachments)
     {
         //
     }
@@ -88,7 +88,7 @@ class InvoicesAttachmentsController extends Controller
      * @param  \App\Models\Invoices_attachments  $invoices_attachments
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Invoices_attachments $invoices_attachments)
+    public function update(Request $request, Invoices_attachment $invoices_attachments)
     {
         //
     }
@@ -99,7 +99,7 @@ class InvoicesAttachmentsController extends Controller
      * @param  \App\Models\Invoices_attachments  $invoices_attachments
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Invoices_attachments $invoices_attachments)
+    public function destroy(Invoices_attachment $invoices_attachments)
     {
         //
     }

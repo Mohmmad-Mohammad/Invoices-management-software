@@ -199,7 +199,6 @@
                                             <!--المرفقات-->
                                             @can('Permission.AddAttachment')
                                             <div class="card card-statistics">
-
                                                     <div class="card-body">
                                                         <p class="text-danger">* صيغة المرفق pdf, jpeg ,.jpg , png </p>
                                                         <h5 class="card-title">اضافة مرفقات</h5>
@@ -249,13 +248,13 @@
                                                                 <td colspan="2">
 
                                                                     <a class="btn btn-outline-success btn-sm"
-                                                                       href="{{ url('View_file') }}/{{ $invoices->invoice_number }}/{{ $attachment->file_name }}"
-                                                                       role="button"><i class="fas fa-eye"></i>&nbsp;
+                                                                    href="{{ url('View_file') }}/{{ $invoices->invoice_number }}/{{ $attachment->file_name }}"
+                                                                    role="button"><i class="fas fa-eye"></i>&nbsp;
                                                                         عرض</a>
 
                                                                     <a class="btn btn-outline-info btn-sm"
-                                                                       href="{{ url('Download_file') }}/{{ $invoices->invoice_number }}/{{ $attachment->file_name }}"
-                                                                       role="button"><i
+                                                                    href="{{ url('Download_file') }}/{{ $invoices->invoice_number }}/{{ $attachment->file_name }}"
+                                                                    role="button"><i
                                                                             class="fas fa-download"></i>&nbsp;
                                                                         تحميل</a>
                                                                     @can('Permission.DeleteAttachment')
@@ -290,7 +289,7 @@
     </div>
                                         <!--/div-->
     <div class="modal fade" id="delete_file" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-                                                         aria-hidden="true">
+            aria-hidden="true">
         <div class="modal-dialog" role="document" >
             <div class="modal-content">
                 <div class="modal-header">
@@ -319,13 +318,10 @@
                 </form>
             </div>
         </div>
+     </div>
     </div>
-                        <!--div-->
-
-
-                </div>
-                </div>
-                </div>
+  </div>
+ </div>
 				<!-- row closed -->
 
 			<!-- Container closed -->

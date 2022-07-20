@@ -3,10 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\SectionsRequest;
-use App\Models\Sections;
+use App\Models\Section;
 use DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+
 
 class SectionsController extends Controller
 {
@@ -17,7 +18,7 @@ class SectionsController extends Controller
      */
     public function index()
     {
-        $Sections = Sections::Selection()->paginate(10);
+        $Sections = Section::Selection()->paginate(10);
         return view('sections.Sections',compact('Sections'));
     }
 
@@ -40,11 +41,11 @@ class SectionsController extends Controller
     public function store(SectionsRequest $request)
     {
         try {
-            $sectione = Sections::Selection();
+            $sectione = Section::Selection();
             if (!$sectione)
             return redirect()->back()->with(['error' => 'هذا القسم موجود مسبقاً ']);
             DB::beginTransaction();
-            Sections::create([
+            Section::create([
             'section_name'=>$request->section_name,
             'description'=>$request->description,
             'Created_by'=>(Auth::user()->name),
@@ -65,7 +66,7 @@ class SectionsController extends Controller
      * @param  \App\Models\Sections  $sections
      * @return \Illuminate\Http\Response
      */
-    public function show(Sections $sections)
+    public function show(Section $sections)
     {
         //
     }
@@ -76,7 +77,7 @@ class SectionsController extends Controller
      * @param  \App\Models\Sections  $sections
      * @return \Illuminate\Http\Response
      */
-    public function edit(Sections $sections)
+    public function edit(Section $sections)
     {
         //
     }
@@ -93,7 +94,7 @@ class SectionsController extends Controller
         try {
             $id = $request->id;
 
-            $sections = Sections::Select('id','section_name','description')->find($id);
+            $sections = Section::Select('id','section_name','description')->find($id);
             $sections->update([
                     'section_name' => $request->section_name,
                     'description' => $request->description,
@@ -115,10 +116,10 @@ class SectionsController extends Controller
     {
         try {
             $id = $request->id;
-            $sections = Sections::Selection()->find($id);
+            $sections = Section::Selection()->find($id);
             if (!$sections)
                 return redirect()->back()->with(['error' => 'هذا القسم غير موجود او ربما يكون محذوفا ']);
-             Sections::find($id)->delete();
+            Section::find($id)->delete();
             return redirect()->back()->with(['add' => 'تم حذف القسم']);
 
         }catch (\Exception $ex){

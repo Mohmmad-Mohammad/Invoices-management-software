@@ -26,11 +26,11 @@
             </div>
             <div>
                 <label class="tx-13">عمولة الفواتير</label>
-                <h5>${{number_format(\App\Models\Invoices::sum('Amount_Commission'))}}</h5>
+                <h5>${{number_format(\App\Models\Invoice::sum('Amount_Commission'))}}</h5>
             </div>
             <div>
                 <label class="tx-13">خصم الفواتير</label>
-                <h5>${{number_format(\App\Models\Invoices::sum('Discount'))}}</h5>
+                <h5>${{number_format(\App\Models\Invoice::sum('Discount'))}}</h5>
             </div>
             <div>
                 <label class="tx-13">المستخدمين</label>
@@ -53,12 +53,12 @@
                         <div class="d-flex">
                             <div class="">
                                 <h4 class="tx-20 font-weight-bold mb-1 text-white">
-                                   ${{number_format(\App\Models\Invoices::sum('Total'),2)}}
+                                ${{number_format(\App\Models\Invoice::sum('Total'),2)}}
                                 </h4>
                                 <h5 class="mb-0 tx-12 text-white op-7">
-                                   عدد الفواتير
+                                عدد الفواتير
                                 </h5>
-                                <p class="mb-0 tx-12 text-white op-7"> {{\App\Models\Invoices::count()}}</p>
+                                <p class="mb-0 tx-12 text-white op-7"> {{\App\Models\Invoice::count()}}</p>
                             </div>
                             <span class="float-right my-auto mr-auto">
 											<i class="fas fa-arrow-circle-up text-white"></i>
@@ -79,19 +79,19 @@
                     <div class="pb-0 mt-0">
                         <div class="d-flex">
                             <div class="">
-                                <h4 class="tx-20 font-weight-bold mb-1 text-white">  ${{number_format(\App\Models\Invoices::where('status','غير مدفوعة')->sum('Total'),2)}}</h4>
+                                <h4 class="tx-20 font-weight-bold mb-1 text-white">  ${{number_format(\App\Models\Invoice::where('status','غير مدفوعة')->sum('Total'),2)}}</h4>
                                 <h5 class="mb-0 tx-12 text-white op-7">
                                     عدد الفواتير الغير مدفوعة
                                 </h5>
-                                <p class="mb-0 tx-12 text-white op-7">{{\App\Models\Invoices::where('Value_Status',2)->count()}}</p>
+                                <p class="mb-0 tx-12 text-white op-7">{{\App\Models\Invoice::where('Value_Status',2)->count()}}</p>
                             </div>
 
                             <span class="float-right my-auto mr-auto">
 											<i class="fas fa-arrow-circle-down text-white"></i>
 
 											<span class="text-white op-7">
-                                        @if(!\App\Models\Invoices::where('Value_Status'))
-                                        {{round(\App\Models\Invoices::where('Value_Status',2)->count() / \App\Models\Invoices::count() * 100 )}}%
+                                        @if(!\App\Models\Invoice::where('Value_Status'))
+                                        {{round(\App\Models\Invoice::where('Value_Status',2)->count() / \App\Models\Invoice::count() * 100 )}}%
                                                 @endif
 
                                             </span>
@@ -111,16 +111,16 @@
                     <div class="pb-0 mt-0">
                         <div class="d-flex">
                             <div class="">
-                                <h4 class="tx-20 font-weight-bold mb-1 text-white">${{number_format(\App\Models\Invoices::where('Value_Status',1)->sum('Total'),2)}}</h4>
+                                <h4 class="tx-20 font-weight-bold mb-1 text-white">${{number_format(\App\Models\Invoice::where('Value_Status',1)->sum('Total'),2)}}</h4>
                                 <h5 class="mb-0 tx-12 text-white op-7">
                                     عدد الفواتير مدفوعة
                                 </h5>
-                                <p class="mb-0 tx-12 text-white op-7">{{\App\Models\Invoices::where('Value_Status',1)->count()}}</p>
+                                <p class="mb-0 tx-12 text-white op-7">{{\App\Models\Invoice::where('Value_Status',1)->count()}}</p>
                             </div>
                             <span class="float-right my-auto mr-auto">
 											<i class="fas fa-arrow-circle-up text-white"></i>
-                                @if(!\App\Models\Invoices::where('Value_Status'))
-											<span class="text-white op-7">  {{round(\App\Models\Invoices::where('Value_Status',1)->count() / \App\Models\Invoices::count() * 100 )}}%</span>
+                                @if(!\App\Models\Invoice::where('Value_Status'))
+											<span class="text-white op-7">  {{round(\App\Models\Invoice::where('Value_Status',1)->count() / \App\Models\Invoice::count() * 100 )}}%</span>
                                 @endif
 										</span>
                         </div>
@@ -138,16 +138,16 @@
                     <div class="pb-0 mt-0">
                         <div class="d-flex">
                             <div class="">
-                                <h4 class="tx-20 font-weight-bold mb-1 text-white">${{number_format(\App\Models\Invoices::where('Value_Status',3)->sum('Total'),2)}}</h4>
+                                <h4 class="tx-20 font-weight-bold mb-1 text-white">${{number_format(\App\Models\Invoice::where('Value_Status',3)->sum('Total'),2)}}</h4>
                                 <h5 class="mb-0 tx-12 text-white op-7">
                                     الفواتير المدفوعة جزئيا
                                 </h5>
-                                <p class="mb-0 tx-12 text-white op-7">{{\App\Models\Invoices::where('Value_Status',3)->count()}}</p>
+                                <p class="mb-0 tx-12 text-white op-7">{{\App\Models\Invoice::where('Value_Status',3)->count()}}</p>
                             </div>
                             <span class="float-right my-auto mr-auto">
 											<i class="fas fa-arrow-circle-down text-white"></i>
-                                @if(!\App\Models\Invoices::where('Value_Status'))
-											<span class="text-white op-7">  {{round(\App\Models\Invoices::where('Value_Status',3)->count() / \App\Models\Invoices::count() * 100 )}}%</span>
+                                @if(!\App\Models\Invoice::where('Value_Status'))
+											<span class="text-white op-7">  {{round(\App\Models\Invoice::where('Value_Status',3)->count() / \App\Models\Invoice::count() * 100 )}}%</span>
                                 @endif
 										</span>
                         </div>

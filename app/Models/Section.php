@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Sections extends Model
+class Section extends Model
 {
     protected $table = 'sections';
     protected $fillable = [
@@ -13,12 +13,11 @@ class Sections extends Model
         'Created_by',
         'created_at',
         'updated_at',
-
     ];
 
     public function scopeSelection($query){
     return $query ->select( 'id', 'section_name', 'description', 'Created_by','created_at','updated_at'
 
-);
+        );
     }
 }

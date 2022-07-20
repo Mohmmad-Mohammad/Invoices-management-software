@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ProductsRequest;
-use App\Models\Products;
-use App\Models\Sections;
+use App\Models\Product;
+use App\Models\Section;
 use DB;
 use Illuminate\Http\Request;
 
@@ -17,8 +17,8 @@ class ProductsController extends Controller
      */
     public function index()
     {
-        $Sections = Sections::all();
-        $Products = Products::all();
+        $Sections = Section::all();
+        $Products = Product::all();
         return view('Products.Products',compact('Products','Sections'));
     }
 
@@ -42,11 +42,11 @@ class ProductsController extends Controller
     {
         //        return $request;
         try {
-            $Products = Products::Selection();
+            $Products = Product::Selection();
             if (!$Products)
                 return redirect('/Products')->with(['error' => 'هذا المنتج موجود مسبقاً ']);
 //            DB::beginTransaction();
-            Products::create([
+            Product::create([
                 'section_id'=>$request->section_id,
                 'Product_name'=>$request->Product_name,
                 'description'=>$request->description,
@@ -68,7 +68,7 @@ class ProductsController extends Controller
      * @param  \App\Models\Products  $products
      * @return \Illuminate\Http\Response
      */
-    public function show(Products $products)
+    public function show(Product $products)
     {
         //
     }
@@ -79,7 +79,7 @@ class ProductsController extends Controller
      * @param  \App\Models\Products  $products
      * @return \Illuminate\Http\Response
      */
-    public function edit(Products $products)
+    public function edit(Product $products)
     {
         //
     }
@@ -95,8 +95,8 @@ class ProductsController extends Controller
     {
 //        return $request;
         try {
-            $section_id = Sections::where('section_name',$request->section_name)->first()->id;
-            $Products = Products::findOrFail($request->id);
+            $section_id = Section::where('section_name',$request->section_name)->first()->id;
+            $Products = Product::findOrFail($request->id);
             $Products->update([
                 'Product_name'=>$request->Product_name,
                 'description'=>$request->description,
@@ -118,7 +118,7 @@ class ProductsController extends Controller
     public function destroy(Request $request)
     {
         try {
-            $Products = Products::find($request->id);
+            $Products = Product::find($request->id);
             if (!$Products)
                 return redirect()->back()->with(['error' => 'هذا المنتج غير موجود او ربما يكون محذوفا ']);
             $Products->delete();

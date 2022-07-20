@@ -276,11 +276,8 @@
                 </div>
                 <div class="modal-body">
                     هل انت متاكد من عملية الارشفة ؟
-                    <input type="text" name="invoice_id" id="invoice_id" value="">
+                    <input type="hidden" name="invoice_id" id="invoice_id" value="">
                     <input type="hidden" name="id_page" id="id_page" value="2">
-
-
-
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">الغاء</button>
