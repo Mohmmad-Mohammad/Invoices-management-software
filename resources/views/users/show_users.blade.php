@@ -2,7 +2,7 @@
 @section('css')
 
 @section('title')
-    المستخدمين
+{{ trans('invoices.Users') }}
 @stop
 
 <!-- Internal Data table css -->
@@ -21,8 +21,7 @@
     <div class="breadcrumb-header justify-content-between">
         <div class="my-auto">
             <div class="d-flex">
-                <h4 class="content-title mb-0 my-auto">المستخدمين</h4><span class="text-muted mt-1 tx-13 mr-2 mb-0">/ قائمة
-                المستخدمين</span>
+                <h4 class="content-title mb-0 my-auto">{{ trans('invoices.Users') }}</h4><span class="text-muted mt-1 tx-13 mr-2 mb-0">/ {{ trans('invoices.ListUsers') }}</span>
             </div>
         </div>
     </div>
@@ -44,7 +43,7 @@
                 <div class="card-header pb-0">
                     <div class="col-sm-1 col-md-2">
                         @can('اضافة مستخدم')
-                            <a class="btn btn-primary btn-sm" href="{{ route('users.create') }}">اضافة مستخدم</a>
+                            <a class="btn btn-primary btn-sm" href="{{ route('users.create') }}">{{ trans('invoices.AddUser') }}</a>
                         @endcan
                     </div>
                 </div>
@@ -54,11 +53,11 @@
                             <thead>
                             <tr>
                                 <th class="wd-10p border-bottom-0">#</th>
-                                <th class="wd-15p border-bottom-0">اسم المستخدم</th>
-                                <th class="wd-20p border-bottom-0">البريد الالكتروني</th>
-                                <th class="wd-10p border-bottom-0">حالة المستخدم</th>
-                                <th class="wd-15p border-bottom-0">نوع المستخدم</th>
-                                <th class="wd-10p border-bottom-0">العمليات</th>
+                                <th class="wd-15p border-bottom-0">{{ trans('invoices.NameUser') }}</th>
+                                <th class="wd-20p border-bottom-0">{{ trans('invoices.Email') }}</th>
+                                <th class="wd-10p border-bottom-0">{{ trans('invoices.StatusUser') }}</th>
+                                <th class="wd-15p border-bottom-0">{{ trans('invoices.TypeUser') }}</th>
+                                <th class="wd-10p border-bottom-0">{{ trans('invoices.Processes') }}</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -70,11 +69,11 @@
                                     <td>
                                         @if ($user->status == 1 )
                                             <span class="label text-success text-center">
-                                                <div>مفعل{{ $user->Status }}
+                                                <div>{{ trans('invoices.Active') }}{{ $user->Status }}
                                             </div>
                                         @else
                                                     <span class="label text-danger text-center">
-                                                <div>غير مفعل{{ $user->Status }}
+                                                <div>{{ trans('invoices.NotActive') }}{{ $user->Status }}
                                             </div>
                                         @endif
                                     </td>
@@ -90,13 +89,13 @@
                                     <td>
                                         @can('Permission.UserEdit')
                                             <a href="{{ route('users.edit', $user->id) }}" class="btn btn-sm btn-info"
-                                               title="تعديل"><i class="las la-pen"></i></a>
+                                               title="{{ trans('invoices.Edit') }}"><i class="las la-pen"></i></a>
                                         @endcan
 
                                         @can('Permission.UserDelete')
                                             <a class="modal-effect btn btn-sm btn-danger" data-effect="effect-scale"
                                                data-user_id="{{ $user->id }}" data-username="{{ $user->name }}"
-                                               data-toggle="modal" href="#modaldemo8" title="حذف"><i
+                                               data-toggle="modal" href="#modaldemo8" title="{{ trans('invoices.Delete') }}"><i
                                                     class="las la-trash"></i></a>
                                         @endcan
 
@@ -106,9 +105,9 @@
                                                title="تعديل الحالة"
 
                                                 @if($user->status== 0)
-                                               class=" btn btn-sm btn-success">    تفعيل
+                                               class=" btn btn-sm btn-success">    {{ trans('invoices.Active') }}
                                                 @else
-                                                    class=" btn btn-sm btn-danger">     الغاء تفعيل
+                                                    class=" btn btn-sm btn-danger">     {{ trans('invoices.NotActive') }}
                                                 @endif
                                             </a>
                                     </td>
@@ -127,20 +126,20 @@
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content modal-content-demo">
                     <div class="modal-header">
-                        <h6 class="modal-title">حذف المستخدم</h6><button aria-label="Close" class="close"
-                                                                         data-dismiss="modal" type="button"><span aria-hidden="true">&times;</span></button>
+                        <h6 class="modal-title">{{ trans('invoices.DeleteUser') }}</h6><button aria-label="Close" class="close"
+                        data-dismiss="modal" type="button"><span aria-hidden="true">&times;</span></button>
                     </div>
                     <form action="{{ route('users.destroy', 'test') }}" method="post">
                         {{ method_field('delete') }}
                         {{ csrf_field() }}
                         <div class="modal-body">
-                            <p>هل انت متاكد من عملية الحذف ؟</p><br>
+                            <p>{{ trans('invoices.SuccessDelete') }} ؟</p><br>
                             <input type="hidden" name="user_id" id="user_id" value="">
                             <input class="form-control" name="username" id="username" type="text" readonly>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">الغاء</button>
-                            <button type="submit" class="btn btn-danger">تاكيد</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">{{ trans('invoices.cancel') }}</button>
+                            <button type="submit" class="btn btn-danger">{{ trans('invoices.submit') }}</button>
                         </div>
                 </div>
                 </form>

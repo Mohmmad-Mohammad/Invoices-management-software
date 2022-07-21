@@ -200,7 +200,6 @@
     <script src="{{ URL::asset('assets/plugins/datatable/js/responsive.bootstrap4.min.js') }}"></script>
     <!--Internal  Datatable js -->
     <script src="{{ URL::asset('assets/js/table-data.js') }}"></script>
-
     <!--Internal  Datepicker js -->
     <script src="{{ URL::asset('assets/plugins/jquery-ui/ui/widgets/datepicker.js') }}"></script>
     <!--Internal  jquery.maskedinput js -->
@@ -224,7 +223,6 @@
             dateFormat: 'yy-mm-dd'
         }).val();
     </script>
-
     <script>
         $(document).ready(function() {
             $('select[name="Section"]').on('change', function() {
@@ -248,6 +246,4 @@
             });
         });
     </script>
-
-
 @endsection
