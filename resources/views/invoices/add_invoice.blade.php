@@ -132,7 +132,7 @@
 
                         <div class="row">
                             <div class="col">
-                                <label for="inputName" class="control-label">{{ trans('invoices.Value_Status')}}</label>
+                                <label for="inputName" class="control-label">{{ trans('invoices.Value_VAT')}}</label>
                                 <input type="text" class="form-control" id="Value_VAT" name="Value_VAT" readonly>
                             </div>
 

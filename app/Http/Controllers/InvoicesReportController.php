@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Invoice;
 
-class Invoices_ReportController extends Controller
+class InvoicesReportController extends Controller
 {
     public function index()
     {

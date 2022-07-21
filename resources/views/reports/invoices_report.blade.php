@@ -15,7 +15,7 @@
     <link href="{{ URL::asset('assets/plugins/select2/css/select2.min.css') }}" rel="stylesheet">
 
 @section('title')
-    تقرير الفواتير 
+   {{ trans('invoices.InvoicesReport') }}
 @stop
 @endsection
 @section('page-header')
@@ -23,8 +23,7 @@
     <div class="breadcrumb-header justify-content-between">
         <div class="my-auto">
             <div class="d-flex">
-                <h4 class="content-title mb-0 my-auto">التقارير</h4><span class="text-muted mt-1 tx-13 mr-2 mb-0">/ تقرير
-                الفواتير</span>
+                <h4 class="content-title mb-0 my-auto"> {{ trans('invoices.Report') }}</h4><span class="text-muted mt-1 tx-13 mr-2 mb-0">/ {{ trans('invoices.InvoicesReport') }}</span>
             </div>
         </div>
     </div>
@@ -61,41 +60,40 @@
 
                         <div class="col-lg-3">
                             <label class="rdiobox">
-                                <input checked name="rdio" type="radio" value="1" id="type_div"> <span>بحث بنوع
-                                الفاتورة</span></label>
+                                <input checked name="rdio" type="radio" value="1" id="type_div"> <span> {{ trans('invoices.InvoicesType') }}</span></label>
                         </div>
 
 
                         <div class="col-lg-3 mg-t-20 mg-lg-t-0">
-                            <label class="rdiobox"><input name="rdio" value="2" type="radio"><span>بحث برقم الفاتورة
+                            <label class="rdiobox"><input name="rdio" value="2" type="radio"><span>{{ trans('invoices.InvoicesNumber') }}
                             </span></label>
                         </div><br><br>
 
                         <div class="row">
 
                             <div class="col-lg-3 mg-t-20 mg-lg-t-0" id="type">
-                                <p class="mg-b-10">تحديد نوع الفواتير</p><select class="form-control select2" name="type"
+                                <p class="mg-b-10">{{ trans('invoices.SelectInvoices') }}</p><select class="form-control select2" name="type"
                                                                                  required>
                                     <option value="{{ $type ?? 'حدد نوع الفواتير' }}" selected>
                                         {{ $type ?? 'حدد نوع الفواتير' }}
                                     </option>
 
-                                    <option value="مدفوعة">الفواتير المدفوعة</option>
-                                    <option value="غير مدفوعة">الفواتير الغير مدفوعة</option>
-                                    <option value="مدفوعة جزئيا">الفواتير المدفوعة جزئيا</option>
+                                    <option value="مدفوعة">{{ trans('invoices.PaidBills') }}</option>
+                                    <option value="غير مدفوعة">{{ trans('invoices.UnPaid') }}</option>
+                                    <option value="مدفوعة جزئيا">{{ trans('invoices.PartiallyPaidInvoices') }}</option>
 
                                 </select>
                             </div><!-- col-4 -->
 
 
                             <div class="col-lg-3 mg-t-20 mg-lg-t-0" id="invoice_number">
-                                <p class="mg-b-10">البحث برقم الفاتورة</p>
+                                <p class="mg-b-10">{{ trans('invoices.InvoicesNumber') }}</p>
                                 <input type="text" class="form-control" id="invoice_number" name="invoice_number">
 
                             </div><!-- col-4 -->
 
                             <div class="col-lg-3" id="start_at">
-                                <label for="exampleFormControlSelect1">من تاريخ</label>
+                                <label for="exampleFormControlSelect1">{{ trans('invoices.FromDate') }}</label>
                                 <div class="input-group">
                                     <div class="input-group-prepend">
                                         <div class="input-group-text">
@@ -107,7 +105,7 @@
                             </div>
 
                             <div class="col-lg-3" id="end_at">
-                                <label for="exampleFormControlSelect1">الي تاريخ</label>
+                                <label for="exampleFormControlSelect1">{{ trans('invoices.ToDate') }}</label>
                                 <div class="input-group">
                                     <div class="input-group-prepend">
                                         <div class="input-group-text">
@@ -121,7 +119,7 @@
 
                         <div class="row">
                             <div class=" col-md-1">
-                                <button class="btn btn-primary btn-block">بحث</button>
+                                <button class="btn btn-primary btn-block">{{ trans('invoices.Search') }}</button>
                             </div>
                         </div>
                     </form>
@@ -134,17 +132,18 @@
                                 <thead>
                                 <tr>
                                     <th class="border-bottom-0">#</th>
-                                    <th class="border-bottom-0">رقم الفاتورة</th>
-                                    <th class="border-bottom-0">تاريخ القاتورة</th>
-                                    <th class="border-bottom-0">تاريخ الاستحقاق</th>
-                                    <th class="border-bottom-0">المنتج</th>
-                                    <th class="border-bottom-0">القسم</th>
-                                    <th class="border-bottom-0">الخصم</th>
-                                    <th class="border-bottom-0">نسبة الضريبة</th>
-                                    <th class="border-bottom-0">قيمة الضريبة</th>
-                                    <th class="border-bottom-0">الاجمالي</th>
-                                    <th class="border-bottom-0">الحالة</th>
-                                    <th class="border-bottom-0">ملاحظات</th>
+                                    <th class="border-bottom-0">{{ trans('invoicespaid.InvoicesNumber')}}</th>
+                                    <th class="border-bottom-0">{{ trans('invoicespaid.InvoicesNumberTime')}} </th>
+                                    <th class="border-bottom-0">{{ trans('invoicespaid.InvoicesNumberPaidBills')}}</th>
+                                    <th class="border-bottom-0">{{ trans('invoicespaid.Products')}}</th>
+                                    <th class="border-bottom-0">{{ trans('invoicespaid.Sections')}}</th>
+                                    <th class="border-bottom-0">{{ trans('invoicespaid.Discount')}}</th>
+                                    <th class="border-bottom-0">{{ trans('invoicespaid.Rate_VAT')}}</th>
+                                    <th class="border-bottom-0">{{ trans('invoicespaid.Rate_VAT')}}</th>
+                                    <th class="border-bottom-0">{{ trans('invoicespaid.Total')}}</th>
+                                    <th class="border-bottom-0">{{ trans('invoicespaid.Value_Status')}}</th>
+                                    <th class="border-bottom-0">{{ trans('invoicespaid.note')}}</th>
+                                    <th class="border-bottom-0">{{ trans('invoicespaid.Processes')}}</th>
 
                                 </tr>
                                 </thead>

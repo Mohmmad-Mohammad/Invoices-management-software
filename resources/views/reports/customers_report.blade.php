@@ -15,7 +15,7 @@
     <link href="{{ URL::asset('assets/plugins/select2/css/select2.min.css') }}" rel="stylesheet">
 
 @section('title')
-    تقرير العملاء
+{{ trans('invoices.CustomersReport') }}
 @stop
 @endsection
 @section('page-header')
@@ -23,8 +23,7 @@
     <div class="breadcrumb-header justify-content-between">
         <div class="my-auto">
             <div class="d-flex">
-                <h4 class="content-title mb-0 my-auto">التقارير</h4><span class="text-muted mt-1 tx-13 mr-2 mb-0">/ تقرير
-                العملاء</span>
+                <h4 class="content-title mb-0 my-auto">{{ trans('invoices.Report') }}</h4><span class="text-muted mt-1 tx-13 mr-2 mb-0">/ {{ trans('invoices.CustomersReport') }}</span>
             </div>
         </div>
     </div>
@@ -62,11 +61,11 @@
                         <div class="row">
 
                             <div class="col">
-                                <label for="inputName" class="control-label">القسم</label>
+                                <label for="inputName" class="control-label">{{ trans('invoices.Section') }}</label>
                                 <select name="Section" class="form-control select2" onclick="console.log($(this).val())"
                                         onchange="console.log('change is firing')">
                                     <!--placeholder-->
-                                    <option value="" selected disabled>حدد القسم</option>
+                                    <option value="" selected disabled>{{ trans('invoices.SelectSection') }}</option>
                                     @foreach ($sections as $section)
                                         <option value="{{ $section->id }}"> {{ $section->section_name }}</option>
                                     @endforeach
@@ -74,40 +73,40 @@
                             </div>
 
                             <div class="col-lg-3 mg-t-20 mg-lg-t-0">
-                                <label for="inputName" class="control-label">المنتج</label>
+                                <label for="inputName" class="control-label">{{ trans('invoices.Products') }}</label>
                                 <select id="product" name="product" class="form-control select2">
                                 </select>
                             </div>
 
 
                             <div class="col-lg-3" id="start_at">
-                                <label for="exampleFormControlSelect1">من تاريخ</label>
+                                <label for="exampleFormControlSelect1">{{ trans('invoices.FromDate') }}</label>
                                 <div class="input-group">
                                     <div class="input-group-prepend">
                                         <div class="input-group-text">
                                             <i class="fas fa-calendar-alt"></i>
                                         </div>
                                     </div><input class="form-control fc-datepicker" value="{{ $start_at ?? '' }}"
-                                                 name="start_at" placeholder="YYYY-MM-DD" type="text">
+                                        name="start_at" placeholder="YYYY-MM-DD" type="text">
                                 </div><!-- input-group -->
                             </div>
 
                             <div class="col-lg-3" id="end_at">
-                                <label for="exampleFormControlSelect1">الي تاريخ</label>
+                                <label for="exampleFormControlSelect1">{{ trans('invoices.ToDate') }}</label>
                                 <div class="input-group">
                                     <div class="input-group-prepend">
                                         <div class="input-group-text">
                                             <i class="fas fa-calendar-alt"></i>
                                         </div>
                                     </div><input class="form-control fc-datepicker" name="end_at"
-                                                 value="{{ $end_at ?? '' }}" placeholder="YYYY-MM-DD" type="text">
+                                        value="{{ $end_at ?? '' }}" placeholder="YYYY-MM-DD" type="text">
                                 </div><!-- input-group -->
                             </div>
                         </div><br>
 
                         <div class="row">
                             <div class=" col-md-1">
-                                <button class="btn btn-primary btn-block">بحث</button>
+                                <button class="btn btn-primary btn-block">{{ trans('invoices.Search') }}</button>
                             </div>
                         </div>
                     </form>
@@ -120,17 +119,18 @@
                                 <thead>
                                 <tr>
                                     <th class="border-bottom-0">#</th>
-                                    <th class="border-bottom-0">رقم الفاتورة</th>
-                                    <th class="border-bottom-0">تاريخ القاتورة</th>
-                                    <th class="border-bottom-0">تاريخ الاستحقاق</th>
-                                    <th class="border-bottom-0">المنتج</th>
-                                    <th class="border-bottom-0">القسم</th>
-                                    <th class="border-bottom-0">الخصم</th>
-                                    <th class="border-bottom-0">نسبة الضريبة</th>
-                                    <th class="border-bottom-0">قيمة الضريبة</th>
-                                    <th class="border-bottom-0">الاجمالي</th>
-                                    <th class="border-bottom-0">الحالة</th>
-                                    <th class="border-bottom-0">ملاحظات</th>
+                                    <th class="border-bottom-0">{{ trans('invoicespaid.InvoicesNumber')}}</th>
+                                    <th class="border-bottom-0">{{ trans('invoicespaid.InvoicesNumberTime')}} </th>
+                                    <th class="border-bottom-0">{{ trans('invoicespaid.InvoicesNumberPaidBills')}}</th>
+                                    <th class="border-bottom-0">{{ trans('invoicespaid.Products')}}</th>
+                                    <th class="border-bottom-0">{{ trans('invoicespaid.Sections')}}</th>
+                                    <th class="border-bottom-0">{{ trans('invoicespaid.Discount')}}</th>
+                                    <th class="border-bottom-0">{{ trans('invoicespaid.Rate_VAT')}}</th>
+                                    <th class="border-bottom-0">{{ trans('invoicespaid.Rate_VAT')}}</th>
+                                    <th class="border-bottom-0">{{ trans('invoicespaid.Total')}}</th>
+                                    <th class="border-bottom-0">{{ trans('invoicespaid.Value_Status')}}</th>
+                                    <th class="border-bottom-0">{{ trans('invoicespaid.note')}}</th>
+                                    <th class="border-bottom-0">{{ trans('invoicespaid.Processes')}}</th>
 
                                 </tr>
                                 </thead>
@@ -227,7 +227,7 @@
 
     <script>
         $(document).ready(function() {
-            $('select[name="Sections"]').on('change', function() {
+            $('select[name="Section"]').on('change', function() {
                 var SectionId = $(this).val();
                 if (SectionId) {
                     $.ajax({

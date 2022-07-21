@@ -1,6 +1,6 @@
 @extends('layouts.master')
 @section('title')
-    تفاصيل الفواتير
+{{ trans('invoices.InvoicesDetails') }}
 @stop
 @section('css')
     <!-- Internal Data table css -->
@@ -16,7 +16,7 @@
 				<div class="breadcrumb-header justify-content-between">
 					<div class="my-auto">
 						<div class="d-flex">
-							<h4 class="content-title mb-0 my-auto">الفواتير</h4><span class="text-muted mt-1 tx-13 mr-2 mb-0">/ تفاصيل الفواتير  </span>
+							<h4 class="content-title mb-0 my-auto">{{ trans('invoices.Invoices') }}</h4><span class="text-muted mt-1 tx-13 mr-2 mb-0">/ {{ trans('invoices.InvoicesDetails') }}  </span>
 						</div>
 					</div>
 
@@ -71,10 +71,10 @@
                                     <div class="tabs-menu1">
                                         <!-- Tabs -->
                                         <ul class="nav panel-tabs main-nav-line">
-                                            <li><a href="#tab4" class="nav-link active" data-toggle="tab">معلومات
-                                                    الفاتورة</a></li>
-                                            <li><a href="#tab5" class="nav-link" data-toggle="tab">حالات الدفع</a></li>
-                                            <li><a href="#tab6" class="nav-link" data-toggle="tab">المرفقات</a></li>
+                                            <li><a href="#tab4" class="nav-link active" data-toggle="tab">{{ trans('invoices.InvoicesDetails') }}
+                                                    </a></li>
+                                            <li><a href="#tab5" class="nav-link" data-toggle="tab">{{ trans('invoices.PaymentStatus') }}</a></li>
+                                            <li><a href="#tab6" class="nav-link" data-toggle="tab">{{ trans('invoices.attachments') }}</a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -88,19 +88,17 @@
                                                 <table class="table table-striped" style="text-align:center">
                                                     <tbody>
                                                     <tr>
-                                                        <th scope="row">رقم الفاتورة</th>
-                                                        <th scope="row">تاريخ الاصدار</th>
-                                                        <th scope="row">تاريخ الاستحقاق</th>
-                                                        <th scope="row">القسم</th>
-                                                        <th scope="row">المنتج</th>
-                                                        <th scope="row">مبلغ التحصيل</th>
-                                                        <th scope="row">مبلغ العمولة</th>
-                                                        <th scope="row">الخصم</th>
-                                                        <th scope="row">نسبة الضريبة</th>
-                                                        <th scope="row">قيمة الضريبة</th>
-                                                        <th scope="row">الاجمالي مع الضريبة</th>
-                                                        <th scope="row">الحالة الحالية</th>
-                                                        <th scope="row">ملاحظات</th>
+                                                        <th class="border-bottom-0">{{ trans('invoicespaid.InvoicesNumber')}}</th>
+                                                        <th class="border-bottom-0">{{ trans('invoicespaid.InvoicesNumberTime')}} </th>
+                                                        <th class="border-bottom-0">{{ trans('invoicespaid.InvoicesNumberPaidBills')}}</th>
+                                                        <th class="border-bottom-0">{{ trans('invoicespaid.Sections')}}</th>
+                                                        <th class="border-bottom-0">{{ trans('invoicespaid.Products')}}</th>
+                                                        <th class="border-bottom-0">{{ trans('invoicespaid.Discount')}}</th>
+                                                        <th class="border-bottom-0">{{ trans('invoicespaid.Rate_VAT')}}</th>
+                                                        <th class="border-bottom-0">{{ trans('invoicespaid.Rate_VAT')}}</th>
+                                                        <th class="border-bottom-0">{{ trans('invoicespaid.Total')}}</th>
+                                                        <th class="border-bottom-0">{{ trans('invoicespaid.Value_Status')}}</th>
+                                                        <th class="border-bottom-0">{{ trans('invoicespaid.note')}}</th>
                                                     </tr>
 
                                                     <tr>
@@ -151,14 +149,14 @@
                                                     <thead>
                                                     <tr class="text-dark">
                                                         <th>#</th>
-                                                        <th>رقم الفاتورة</th>
-                                                        <th>نوع المنتج</th>
-                                                        <th>القسم</th>
-                                                        <th>حالة الدفع</th>
-                                                        <th>تاريخ الدفع </th>
-                                                        <th>ملاحظات</th>
-                                                        <th>تاريخ الاضافة </th>
-                                                        <th>المستخدم</th>
+                                                        <th>{{ trans('invoicespaid.InvoicesNumber')}}</th>
+                                                        <th>{{ trans('invoicespaid.Products')}}</th>
+                                                        <th>{{ trans('invoicespaid.Sections')}}</th>
+                                                        <th>{{ trans('invoicespaid.Value_Status')}}</th>
+                                                        <th> {{ trans('invoicespaid.PaymentDate')}}</th>
+                                                        <th>{{ trans('invoicespaid.note')}}</th>
+                                                        <th>{{ trans('invoicespaid.Created_at')}} </th>
+                                                        <th>{{ trans('invoicespaid.User')}}</th>
                                                     </tr>
                                                     </thead>
                                                     <tbody>
@@ -200,8 +198,8 @@
                                             @can('Permission.AddAttachment')
                                             <div class="card card-statistics">
                                                     <div class="card-body">
-                                                        <p class="text-danger">* صيغة المرفق pdf, jpeg ,.jpg , png </p>
-                                                        <h5 class="card-title">اضافة مرفقات</h5>
+                                                        <p class="text-danger">* {{ trans('invoices.AttachmentsFormula')}} pdf, jpeg ,.jpg , png </p>
+                                                        <h5 class="card-title">{{ trans('invoices.attachments')}}</h5>
                                                         <form method="post" action="{{ url('/InvoiceAttachments') }}"
                                                               enctype="multipart/form-data">
                                                             {{ csrf_field() }}
@@ -212,11 +210,10 @@
                                                                        value="{{ $invoices->invoice_number }}">
                                                                 <input type="hidden" id="invoice_id" name="invoice_id"
                                                                        value="{{ $invoices->id }}">
-                                                                <label class="custom-file-label"  for="customFile">حدد
-                                                                    المرفق</label>
+                                                                <label class="custom-file-label"  for="customFile">{{ trans('invoices.attachments')}}</label>
                                                             </div><br><br>
                                                             <button type="submit" class="btn btn-primary btn-sm "
-                                                                    name="uploadedFile">تاكيد</button>
+                                                                    name="uploadedFile">{{ trans('invoices.attachments')}}</button>
                                                         </form>
                                                     </div>
                                                 @endcan
@@ -227,12 +224,12 @@
                                                            style="text-align:center">
                                                         <thead>
                                                         <tr class="text-dark">
-                                                            <th scope="col">م</th>
-                                                            <th scope="col">اسم الملف</th>
-                                                            <th scope="col">اسم المجلد</th>
-                                                            <th scope="col">قام بالاضافة</th>
-                                                            <th scope="col">تاريخ الاضافة</th>
-                                                            <th scope="col">العمليات</th>
+                                                            <th scope="col">#</th>
+                                                            <th scope="col">{{ trans('invoices.NameFile')}}</th>
+                                                            <th scope="col">{{ trans('invoices.NameFolder')}}</th>
+                                                            <th scope="col">{{ trans('invoices.Created_at')}}</th>
+                                                            <th scope="col">{{ trans('invoices.Created_by')}}</th>
+                                                            <th scope="col">{{ trans('invoices.Processes')}}</th>
                                                         </tr>
                                                         </thead>
                                                         <tbody>
@@ -250,20 +247,20 @@
                                                                     <a class="btn btn-outline-success btn-sm"
                                                                     href="{{ url('View_file') }}/{{ $invoices->invoice_number }}/{{ $attachment->file_name }}"
                                                                     role="button"><i class="fas fa-eye"></i>&nbsp;
-                                                                        عرض</a>
+                                                                    {{ trans('invoices.Show')}}</a>
 
                                                                     <a class="btn btn-outline-info btn-sm"
                                                                     href="{{ url('Download_file') }}/{{ $invoices->invoice_number }}/{{ $attachment->file_name }}"
                                                                     role="button"><i
                                                                             class="fas fa-download"></i>&nbsp;
-                                                                        تحميل</a>
+                                                                            {{ trans('invoices.Download')}}</a>
                                                                     @can('Permission.DeleteAttachment')
                                                                         <button class="btn btn-outline-danger btn-sm"
                                                                                 data-toggle="modal"
                                                                                 data-file_name="{{ $attachment->file_name }}"
                                                                                 data-invoice_number="{{ $attachment->invoice_number }}"
                                                                                 data-id_file="{{ $attachment->id }}"
-                                                                                data-target="#delete_file">حذف</button>
+                                                                                data-target="#delete_file">{{ trans('invoices.Delete')}}</button>
                                                                 @endcan
                                                                 </td>
                                                             </tr>
@@ -293,7 +290,7 @@
         <div class="modal-dialog" role="document" >
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">حذف المرفق</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">{{ trans('invoices.AttachmentsDelete')}}</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -303,7 +300,7 @@
                     {{ csrf_field() }}
                     <div class="modal-body">
                         <p class="text-center">
-                        <h6 style="color:red"> هل انت متاكد من عملية حذف المرفق ؟</h6>
+                        <h6 style="color:red"> {{ trans('invoices.SuccessDelete')}} ?</h6>
                         </p>
 
                         <input type="hidden" name="id_file" id="id_file" value="">
@@ -312,8 +309,8 @@
 
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">الغاء</button>
-                        <button type="submit" class="btn btn-danger">تاكيد</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">{{ trans('invoices.cancel')}}</button>
+                        <button type="submit" class="btn btn-danger">{{ trans('invoices.submit')}}</button>
                     </div>
                 </form>
             </div>

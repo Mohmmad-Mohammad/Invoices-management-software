@@ -84,9 +84,9 @@ Route::get('export_invoices','InvoicesController@export');
 
 Route::get('changeStatus/{id}','UserController@changeStatus') -> name('changeStatus');
 
-Route::get('invoices_report', 'Invoices_ReportController@index');
+Route::get('invoices_report', 'InvoicesReportController@index');
 
-Route::post('Search_invoices', 'Invoices_ReportController@Search_invoices');
+Route::post('Search_invoices', 'InvoicesReportController@Search_invoices');
 
 Route::get('customers_report', 'CustomersReportController@index')->name("customers_report");
 
