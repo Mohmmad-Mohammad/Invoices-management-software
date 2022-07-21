@@ -40,7 +40,7 @@
                             <li><a class="slide-item" href="{{ url('/' . $page='Invoice_UnPaid') }}">  {{ __('sidebar.UnpaidBills')}}</a></li>
                                 @endcan
                                 @can('Permission.PartiallyPaidInvoices')
-                            <li><a class="slide-item" href="{{ url('/' . $page='Invoice_Partial') }}">{{ __('sidebar.PaidBills')}}</a></li>
+                            <li><a class="slide-item" href="{{ url('/' . $page='Invoice_Partial') }}">{{ __('sidebar.PartiallyPaidInvoices')}}</a></li>
                                 @endcan
                                 @can('Permission.InvoiceArchive')
                             <li><a class="slide-item" href="{{ url('/' . $page='Archive') }}">{{ __('sidebar.InvoicesArchive')}} </a></li>

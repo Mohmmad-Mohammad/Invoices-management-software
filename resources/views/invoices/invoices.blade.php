@@ -280,7 +280,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">{{ trans('invoices.cancel')}}</button>
-                    <button type="submit" class="btn btn-success">{{ trans('invoices.{{ trans('invoices.cancel')}}')}}</button>
+                    <button type="submit" class="btn btn-success">{{ trans('invoices.submit')}}</button>
                 </div>
                 </form>
             </div>

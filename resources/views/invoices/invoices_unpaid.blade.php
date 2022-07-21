@@ -18,7 +18,6 @@
     <div class="breadcrumb-header justify-content-between">
         <div class="my-auto">
             <div class="d-flex">
-{{ trans('invoices.UnPaid') }}
                 <h4 class="content-title mb-0 my-auto">{{ trans('invoices.Invoices')}}</h4><span class="text-muted mt-1 tx-13 mr-2 mb-0">/ {{ trans('invoices.UnPaid') }}
                 </span>
             </div>
@@ -72,16 +71,14 @@
                                 <th class="border-bottom-0">{{ trans('invoices.InvoicesNumber')}}</th>
                                 <th class="border-bottom-0">{{ trans('invoices.InvoicesNumberTime')}}</th>
                                 <th class="border-bottom-0">{{ trans('invoices.InvoicesNumberPaidBills')}}</th>
-                                <th class="border-bottom-0">{{ trans('invoices.Sections')}}</th>
                                 <th class="border-bottom-0">{{ trans('invoices.Products')}}</th>
+                                <th class="border-bottom-0">{{ trans('invoices.Sections')}}</th>
+                                <th class="border-bottom-0">{{ trans('invoices.Discount')}}</th>
                                 <th class="border-bottom-0">{{ trans('invoices.AmountCollection')}}</th>
                                 <th class="border-bottom-0">{{ trans('invoices.AmountCommission')}}</th>
-                                <th class="border-bottom-0">{{ trans('invoices.Discount')}}</th>
                                 <th class="border-bottom-0">{{ trans('invoices.Rate_VAT')}}</th>
-                                <th class="border-bottom-0">{{ trans('invoices.note')}}</th>
-                                <th class="border-bottom-0">{{ trans('invoices.Value_VAT')}}</th>
                                 <th class="border-bottom-0">{{ trans('invoices.Value_Status')}}</th>
-                                <th class="border-bottom-0">{{ trans('invoices.Total')}}</th>
+                                <th class="border-bottom-0">{{ trans('invoices.note')}}</th>
                                 <th class="border-bottom-0">{{ trans('invoices.Processes')}}</th>
                             </tr>
                             </thead>

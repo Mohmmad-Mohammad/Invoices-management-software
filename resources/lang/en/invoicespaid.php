@@ -46,4 +46,7 @@ return [
     'SuccessDelete'=>'هل انت متاكد من عملية الحذف  ',
     'cancel'=>'الغاء',
     'submit'=>'تاكيد',
+    'attachments'=>'المرفقات',
+    'AttachmentsFormula'=>'صيغة المرفقات',
+    'SaveData'=>'حفظ البيانات',
 ];

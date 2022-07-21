@@ -18,7 +18,7 @@ return [
     'Invoices'=> 'الفواتير ',
     'PaidBills'=> 'فواتير مدفوعة',
     'BillingList'=> 'قائمة الفواتير',
-    'Permission.PartiallyPaidInvoices'=> 'فواتير مدفوعة جزئيًا',
+    'PartiallyPaidInvoices'=> 'فواتير مدفوعة جزئيًا',
     'UnpaidBills'=> 'الفواتير غير مدفوعة',
     'InvoicesArchive'=> 'الفواتير المؤرشفة',
     'reports'=> 'التقارير',
