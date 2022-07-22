@@ -97,6 +97,15 @@ class UserController extends Controller
         $userRole = $user->roles->pluck('name','name')->all();
         return view('users.edit',compact('user','roles','userRole'));
     }
+
+
+    public function EditUser($id)
+    {
+        $user = User::find($id);
+        $roles = Role::pluck('name','name')->all();
+        $userRole = $user->roles->pluck('name','name')->all();
+        return view('users.editUser',compact('user','roles','userRole'));
+    }
     /**
      * Update the specified resource in storage.
      *
@@ -104,6 +113,31 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
+
+    public function EditUpdate(Request $request, $id)
+    {
+        $this->validate($request, [
+            'name' => 'required',
+            'email' => 'required|email|unique:users,email,'.$id,
+            'password' => 'same:confirm-password',
+            'roles' => 'required'
+            // 'status' => 'required'
+        ]);
+        $input = $request->all();
+        if(!empty($input['password'])){
+            $input['password'] = Hash::make($input['password']);
+        }else{
+            $input = array_except($input,array('password'));
+        }
+        $user = User::find($id);
+        $user->update($input);
+        DB::table('model_has_roles')->where('model_id',$id)->delete();
+        $user->assignRole($request->input('roles'));
+        return redirect()->route('home');
+        session()->flash('success');
+    }
+
     public function update(Request $request, $id)
     {
         $this->validate($request, [
@@ -123,7 +157,7 @@ class UserController extends Controller
         $user->update($input);
         DB::table('model_has_roles')->where('model_id',$id)->delete();
         $user->assignRole($request->input('roles'));
-        return redirect()->route('users.index')
+        return redirect()->back()
             ->with('success','تم تحديث معلومات المستخدم بنجاح');
     }
     /**

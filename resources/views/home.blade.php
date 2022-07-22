@@ -43,6 +43,16 @@
 @section('content')
     <!-- row -->
     <div class="row row-sm">
+        @if (session()->has('success'))
+        <script>
+            window.onload = function() {
+                notif({
+                    msg: "{{trans('messages.SuccessRestored')}}",
+                    type: "success"
+                })
+            }
+        </script>
+@endif
         <div class="col-xl-3 col-lg-6 col-md-6 col-xm-12">
             <div class="card overflow-hidden sales-card bg-primary-gradient">
                 <div class="pl-3 pt-3 pr-3 pb-2 pt-0">

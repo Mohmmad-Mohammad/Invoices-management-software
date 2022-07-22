@@ -58,6 +58,11 @@ Route::resource('users','UserController');
 
 Route::get('/edit/{id}','InvoicesController@edit')->name('edit')->middleware('auth');
 
+Route::get('/edit/{id}','UserController@EditUser');
+
+Route::post('/edit/{id}','UserController@EditUpdate')->name('users.EditUpdate');
+
+
 Route::get('/section/{id}','InvoicesController@getProducts')->middleware('auth');
 
 Route::get('/details/{id}','InvoicesDetailsController@index')->middleware('auth');
