@@ -24,8 +24,6 @@ class HomeController extends Controller
      */
     public function index()
     {
-
-
     $count_all =Invoice::count();
     $count_invoices1 = Invoice::where('Value_Status', 1)->count();
     $count_invoices2 = Invoice::where('Value_Status', 2)->count();
@@ -33,25 +31,21 @@ class HomeController extends Controller
 
     if($count_invoices2 == 0){
         $nspainvoices2=0;
-    }
-    else{
+    } else {
         $nspainvoices2 = $count_invoices2/ $count_all*100;
     }
 
         if($count_invoices1 == 0){
             $nspainvoices1=0;
-        }
-        else{
+        } else {
             $nspainvoices1 = $count_invoices1/ $count_all*100;
         }
 
         if($count_invoices3 == 0){
             $nspainvoices3=0;
-        }
-        else{
+        } else {
             $nspainvoices3 = $count_invoices3/ $count_all*100;
         }
-
 
         $chartjs1 = app()->chartjs
             ->name('barChartTest')
@@ -74,12 +68,8 @@ class HomeController extends Controller
                     'backgroundColor' => ['#FFC54D'],
                     'data' => [$nspainvoices3]
                 ],
-
-
             ])
             ->options([]);
-        #########
-
         $chartjs = app()->chartjs
             ->name('pieChartTest')
             ->type('pie')
@@ -92,7 +82,6 @@ class HomeController extends Controller
                 ]
             ])
             ->options([]);
-
         return view('home', compact('chartjs','chartjs1'));
     }
 }

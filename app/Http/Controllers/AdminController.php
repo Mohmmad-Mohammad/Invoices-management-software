@@ -13,8 +13,6 @@ class AdminController extends Controller
      */
     public function index($id)
     {
-//        return view('invoices.invoices');
-
         if(view()->exists($id)){
             return view($id);
         }

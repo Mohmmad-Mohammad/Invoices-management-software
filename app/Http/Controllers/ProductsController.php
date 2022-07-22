@@ -40,7 +40,6 @@ class ProductsController extends Controller
      */
     public function store(ProductsRequest $request)
     {
-        //        return $request;
         try {
             $Products = Product::Selection();
             if (!$Products)
@@ -93,7 +92,6 @@ class ProductsController extends Controller
      */
     public function update(Request $request)
     {
-//        return $request;
         try {
             $section_id = Section::where('section_name',$request->section_name)->first()->id;
             $Products = Product::findOrFail($request->id);
@@ -126,8 +124,6 @@ class ProductsController extends Controller
 
         }catch (\Exception $ex){
             return redirect()->back()->with(['error' => 'هناك خطأ حاول فيما بعد']);
-
         }
     }
-
 }

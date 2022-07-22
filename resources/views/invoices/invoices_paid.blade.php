@@ -1,6 +1,6 @@
 @extends('layouts.master')
 @section('title')
-{{ trans('invoicespaid.title') }}
+{{ trans('invoices.PaidBills') }}
 @stop
 @section('css')
     <!-- Internal Data table css -->
@@ -18,7 +18,7 @@
     <div class="breadcrumb-header justify-content-between">
         <div class="my-auto">
             <div class="d-flex">
-                <h4 class="content-title mb-0 my-auto">{{ trans('invoicespaid.Invoices')}}</h4><span class="text-muted mt-1 tx-13 mr-2 mb-0">/ {{ trans('invoicespaid.PaidBills')}}
+                <h4 class="content-title mb-0 my-auto">{{ trans('invoices.Invoices')}}</h4><span class="text-muted mt-1 tx-13 mr-2 mb-0">/ {{ trans('invoices.PaidBills')}}
                 </span>
             </div>
         </div>
@@ -59,7 +59,7 @@
                 <div class="card-header pb-0">
                     <div class="d-flex justify-content-between">
                         <a href="invoices/create" class="modal-effect btn btn-sm btn-primary" style="color:white"><i
-                                class="fas fa-plus"></i>&nbsp; {{ trans('invoicespaid.InvoicesAdd')}}</a>
+                                class="fas fa-plus"></i>&nbsp; {{ trans('invoices.InvoicesAdd')}}</a>
                     </div>
                 </div>
                 <div class="card-body">
@@ -68,18 +68,18 @@
                             <thead>
                             <tr>
                                 <th class="border-bottom-0">#</th>
-                                <th class="border-bottom-0">{{ trans('invoicespaid.InvoicesNumber')}}</th>
-                                <th class="border-bottom-0">{{ trans('invoicespaid.InvoicesNumberTime')}} </th>
-                                <th class="border-bottom-0">{{ trans('invoicespaid.InvoicesNumberPaidBills')}}</th>
-                                <th class="border-bottom-0">{{ trans('invoicespaid.Products')}}</th>
-                                <th class="border-bottom-0">{{ trans('invoicespaid.Sections')}}</th>
-                                <th class="border-bottom-0">{{ trans('invoicespaid.Discount')}}</th>
-                                <th class="border-bottom-0">{{ trans('invoicespaid.Rate_VAT')}}</th>
-                                <th class="border-bottom-0">{{ trans('invoicespaid.Rate_VAT')}}</th>
-                                <th class="border-bottom-0">{{ trans('invoicespaid.Total')}}</th>
-                                <th class="border-bottom-0">{{ trans('invoicespaid.Value_Status')}}</th>
-                                <th class="border-bottom-0">{{ trans('invoicespaid.note')}}</th>
-                                <th class="border-bottom-0">{{ trans('invoicespaid.Processes')}}</th>
+                                <th class="border-bottom-0">{{ trans('invoices.InvoicesNumber')}}</th>
+                                <th class="border-bottom-0">{{ trans('invoices.InvoicesNumberTime')}} </th>
+                                <th class="border-bottom-0">{{ trans('invoices.InvoicesNumberPaidBills')}}</th>
+                                <th class="border-bottom-0">{{ trans('invoices.Products')}}</th>
+                                <th class="border-bottom-0">{{ trans('invoices.Sections')}}</th>
+                                <th class="border-bottom-0">{{ trans('invoices.Discount')}}</th>
+                                <th class="border-bottom-0">{{ trans('invoices.Rate_VAT')}}</th>
+                                <th class="border-bottom-0">{{ trans('invoices.Rate_VAT')}}</th>
+                                <th class="border-bottom-0">{{ trans('invoices.Total')}}</th>
+                                <th class="border-bottom-0">{{ trans('invoices.Value_Status')}}</th>
+                                <th class="border-bottom-0">{{ trans('invoices.note')}}</th>
+                                <th class="border-bottom-0">{{ trans('invoices.Processes')}}</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -119,26 +119,26 @@
                                         <div class="dropdown">
                                             <button aria-expanded="false" aria-haspopup="true"
                                                     class="btn ripple btn-primary btn-sm" data-toggle="dropdown"
-                                                    type="button">{{ trans('invoicespaid.Processes')}}<i class="fas fa-caret-down ml-1"></i></button>
+                                                    type="button">{{ trans('invoices.Processes')}}<i class="fas fa-caret-down ml-1"></i></button>
                                             <div class="dropdown-menu tx-13">
                                                 <a class="dropdown-item"
-                                                   href=" {{ url('edit/') }}/{{ $invoice->id }}"><i class="text-primary las la-pen"></i>{{ trans('invoicespaid.Edit')}}</a>
+                                                   href=" {{ url('edit/') }}/{{ $invoice->id }}"><i class="text-primary las la-pen"></i>{{ trans('invoices.Edit')}}</a>
 
                                                 <a class="dropdown-item" href="#" data-invoice_id="{{ $invoice->id }}"
                                                    data-toggle="modal" data-target="#delete_invoice"><i
                                                         class="text-danger fas fa-trash-alt"></i>&nbsp;&nbsp;
-                                                        {{ trans('invoicespaid.DeleteInvices')}}</a>
+                                                        {{ trans('invoices.DeleteInvices')}}</a>
 
                                                 <a class="dropdown-item"
                                                    href="{{ URL::route('Status_show', [$invoice->id]) }}"><i
                                                         class=" text-success fas
                                                         fa-money-bill"></i>&nbsp;&nbsp;
-                                                    {{ trans('invoicespaid.ChangePaymentStatus')}}
+                                                    {{ trans('invoices.ChangePaymentStatus')}}
                                                     </a>
 
                                                 <a class="dropdown-item" href="#" data-invoice_id="{{ $invoice->id }}"
                                                    data-toggle="modal" data-target="#Transfer_invoice"><i
-                                                        class="text-warning fas fa-exchange-alt"></i>&nbsp;&nbsp;{{ trans('invoicespaid.Archived')}}
+                                                        class="text-warning fas fa-exchange-alt"></i>&nbsp;&nbsp;{{ trans('invoices.Archived')}}
                                                     </a>
 
                                             </div>
@@ -163,7 +163,7 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">{{ trans('invoicespaid.DeleteInvices')}}</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">{{ trans('invoices.DeleteInvices')}}</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -172,12 +172,12 @@
                     {{ csrf_field() }}
                 </div>
                 <div class="modal-body">
-                    {{ trans('invoicespaid.SuccessDelete')}} ؟
+                    {{ trans('invoices.SuccessDelete')}} ؟
                     <input type="hidden" name="invoice_id" id="invoice_id" value="">
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">{{ trans('invoicespaid.cancel')}}</button>
-                    <button type="submit" class="btn btn-danger">{{ trans('invoicespaid.submit')}}</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">{{ trans('invoices.cancel')}}</button>
+                    <button type="submit" class="btn btn-danger">{{ trans('invoices.submit')}}</button>
                 </div>
                 </form>
             </div>
@@ -191,7 +191,7 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">{{ trans('invoicespaid.Archived')}} </h5>
+                    <h5 class="modal-title" id="exampleModalLabel">{{ trans('invoices.Archived')}} </h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -200,14 +200,14 @@
                     {{ csrf_field() }}
                 </div>
                 <div class="modal-body">
-                    {{ trans('invoicespaid.SuccessArchived')}}  ؟
+                    {{ trans('invoices.SuccessArchived')}}  ؟
                     <input type="hidden" name="invoice_id" id="invoice_id" value="">
                     <input type="hidden" name="id_page" id="id_page" value="2">
 
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">{{ trans('invoicespaid.cancel')}}</button>
-                    <button type="submit" class="btn btn-success">{{ trans('invoicespaid.submit')}}</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">{{ trans('invoices.cancel')}}</button>
+                    <button type="submit" class="btn btn-success">{{ trans('invoices.submit')}}</button>
                 </div>
                 </form>
             </div>

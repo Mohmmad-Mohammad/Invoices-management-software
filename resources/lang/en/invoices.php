@@ -76,6 +76,7 @@ return [
     'Report'=>'تقرير',
     'InvoicesType'=>'بحث بنوع الفاتورة',
     'SelectInvoices'=>'حدد نوع الفواتير',
+    'SelectSection'=>'حدد نوع القسم',
     'InvoicesNumber'=>'بحث برقم الفاتورة',
     'FromDate'=>'من تاريخ',
     'ToDate'=>'الى تاريخ',
@@ -108,11 +109,20 @@ return [
     'NotActive'=>'غير مفعل',
     'Settings'=> 'الاعدادات',
     'AddSection'=> 'اصافة قسم',
+    'AddProduct'=> 'اصافة منتج',
+    'NameProduct'=> 'اسم منتج',
+    'DeleteProduct'=> 'حذف المنتج',
+    'NameSection'=> 'اسم القسم',
     'EditSection'=> 'تعديل قسم',
     'CreatedSection'=> 'مضيف القسم',
     'NameSection'=> 'اسم قسم',
     'DeleteSection'=> 'حذف القسم',
     'CreatedDate'=> 'تاريخ التسجيل',
     'EditDate'=> 'تاريخ التسجيل',
+    'Products'=>'المنتجات',
+    'EditSection'=>'تعديل القسم',
+    'EditProducts'=>'تعديل المنتج',
+    'EditNote'=>'تعديل الملاحظات',
+
 
 ];

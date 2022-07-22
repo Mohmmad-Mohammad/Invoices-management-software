@@ -13,34 +13,22 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-
-
-
-
 Route::get('/', function () {
     return view('auth.login');
 });
 
-//Route::get('/home', 'HomeController@index')->name('home');
-
-//Route::get('/home', 'HomeController@index')->name('home');
 Auth::routes();
-
-
-
 Route::group(['middleware' => ['auth']], function() {
-//Route::post('/delete','InvoicesController@destroy')->name('delete_invoices')->middleware('auth');
 Route::get('home', 'HomeController@index')->name('home');
-Route::resource('invoices', 'InvoicesController')->middleware('auth');
-Route::resource('Sections', 'SectionsController')->middleware('auth');
-Route::resource('Products', 'ProductsController')->middleware('auth');
-Route::resource('InvoiceAttachments','InvoicesAttachmentsController')->middleware('auth');
+Route::resource('invoices', 'InvoicesController');
+Route::resource('Sections', 'SectionsController');
+Route::resource('Products', 'ProductsController');
+Route::resource('InvoiceAttachments','InvoicesAttachmentsController');
 Route::resource('Archive', 'InvoiceArchiveController');
 #################################################################
 
 ################################## Route Delete #########################
-Route::post('/delete_file/','InvoicesDetailsController@destroy')->name('delete_file')->middleware('auth');
+Route::post('/delete_file/','InvoicesDetailsController@destroy')->name('delete_file');
 
 Route::post('invoices/delete/','InvoicesController@destroy')->name('invoices.destroy');
 
@@ -53,26 +41,25 @@ Route::post('Sections/delete','SectionsController@destroy')->name('Sections.dest
 ################################## Route Roles  #########################
 
 Route::resource('roles','UserManagement\RoleController');
+
 Route::resource('users','UserController');
 ################################## Route Roles End #########################
 
-
-Route::get('/edit/{id}','InvoicesController@edit')->name('edit')->middleware('auth');
+Route::get('/edit/{id}','InvoicesController@edit')->name('edit');
 
 Route::get('/edit/{id}','UserController@EditUser');
 
 Route::post('/edit/{id}','UserController@EditUpdate')->name('users.EditUpdate');
 
+Route::get('/section/{id}','InvoicesController@getProducts');
 
-Route::get('/section/{id}','InvoicesController@getProducts')->middleware('auth');
+Route::get('/details/{id}','InvoicesDetailsController@index');
 
-Route::get('/details/{id}','InvoicesDetailsController@index')->middleware('auth');
+Route::get('InvoicesDetails/{id}','InvoicesDetailsController@index');
 
-Route::get('InvoicesDetails/{id}','InvoicesDetailsController@index')->middleware('auth');
+Route::get('/View_file/{invoice_number}/{file_name}','InvoicesDetailsController@Openfile');
 
-Route::get('/View_file/{invoice_number}/{file_name}','InvoicesDetailsController@Openfile')->middleware('auth');
-
-Route::get('/Download_file/{invoice_number}/{file_name}','InvoicesDetailsController@Downloadfile')->middleware('auth');
+Route::get('/Download_file/{invoice_number}/{file_name}','InvoicesDetailsController@Downloadfile');
 
 Route::get('/Status_show/{id}', 'InvoicesController@show')->name('Status_show');
 

@@ -97,7 +97,6 @@ class InvoicesController extends Controller
             return $ex;
 //            DB::rollback();
             return redirect('/invoices/create')->with(['error' => 'هناك خطأ حاول فيما بعد']);
-
         }
     }
 
@@ -107,8 +106,6 @@ class InvoicesController extends Controller
         $Invoices = Invoice::where('id',$id)->first();
         $sections = Section::all();
         return view('invoices.edit_invoice',compact('Invoices','sections'));
-
-
     }
 
     public function update(Request $request)

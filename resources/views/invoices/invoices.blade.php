@@ -274,7 +274,7 @@
                     {{ csrf_field() }}
                 </div>
                 <div class="modal-body">
-                     {{ trans('invoices.SuccessArchived') }} ?
+               {{ trans('invoices.SuccessArchived') }} ?
                     <input type="hidden" name="invoice_id" id="invoice_id" value="">
                     <input type="hidden" name="id_page" id="id_page" value="2">
                 </div>
