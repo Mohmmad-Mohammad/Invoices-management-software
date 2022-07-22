@@ -1,6 +1,6 @@
 @extends('layouts.master')
 @section('title')
-    الافسام
+{{ trans('invoices.Sections') }}
 @endsection
 @section('css')
 @section('css')
@@ -17,7 +17,7 @@
     <div class="breadcrumb-header justify-content-between">
         <div class="my-auto">
             <div class="d-flex">
-                <h4 class="content-title mb-0 my-auto">الاعدادات</h4><span class="text-muted mt-1 tx-13 mr-2 mb-0">/ الاقسام</span>
+                <h4 class="content-title mb-0 my-auto">{{ trans('invoices.Settings') }}</h4><span class="text-muted mt-1 tx-13 mr-2 mb-0">/ {{ trans('invoices.Sections') }}</span>
             </div>
         </div>
 
@@ -54,7 +54,7 @@
                 <div class="card-header pb-0">
                     @can('Permission.AddSection')
                     <div class="col-sm-4 col-md-4 col-xl-3 mg-t-20">
-                        <a class="modal-effect btn btn-outline-success btn-block" data-effect="effect-sign" data-toggle="modal" href="#modaldemo8">  اضافة قسم <i
+                        <a class="modal-effect btn btn-outline-success btn-block" data-effect="effect-sign" data-toggle="modal" href="#modaldemo8">  {{ trans('invoices.AddSection') }} <i
                                 class="fas fa-plus"></i></a>
                     </div>
                     @endcan
@@ -73,12 +73,12 @@
                             <thead>
                             <tr>
                                 <th class="border-bottom-0">#</th>
-                                <th class="border-bottom-0">اسم القسم</th>
-                                <th class="border-bottom-0">مضيف القسم</th>
-                                <th class="border-bottom-0">الوصف</th>
-                                <th class="border-bottom-0">تاريخ التسجيل</th>
-                                <th class="border-bottom-0">تاريخ تعديل</th>
-                                <th class="border-bottom-0">عمليات</th>
+                                <th class="border-bottom-0">{{ trans('invoices.NameSection') }} </th>
+                                <th class="border-bottom-0">{{ trans('invoices.CreatedSection') }}</th>
+                                <th class="border-bottom-0">{{ trans('invoices.note') }}</th>
+                                <th class="border-bottom-0">{{ trans('invoices.CreatedDate') }}</th>
+                                <th class="border-bottom-0">{{ trans('invoices.EditDate') }}</th>
+                                <th class="border-bottom-0">{{ trans('invoices.Processes') }}</th>
 
                             </tr>
                             </thead>
@@ -101,12 +101,12 @@
                                             <a data-id="{{$Section -> id}}" data-section_name="{{$Section -> section_name}}" data-description="{{$Section -> description}}"
                                                data-effect="effect-sign" data-toggle="modal" href="#modaldemo4"
 
-                                               class="btn btn-outline-primary btn-min-width box-shadow-3 mr-1 mb-1">تعديل <i class="las la-pen"></i></a>
+                                               class="btn btn-outline-primary btn-min-width box-shadow-3 mr-1 mb-1">{{ trans('invoices.Edit') }} <i class="las la-pen"></i></a>
                                             @endcan
                                             @can('Permission.DeleteSection')
 
                                             <a data-id="{{$Section -> id}}" data-section_name="{{$Section -> section_name}}" data-toggle="modal" href="#modaldemo5"
-                                               class="btn btn-outline-danger btn-min-width box-shadow-3 mr-1 mb-1">حذف <i class="las la-trash"></i></a>
+                                               class="btn btn-outline-danger btn-min-width box-shadow-3 mr-1 mb-1">{{ trans('invoices.Delete') }} <i class="las la-trash"></i></a>
                                                 @endcan
 
 {{--                                            <a href=""--}}
@@ -127,25 +127,25 @@
                         <div class="modal-dialog" role="document">
                             <div class="modal-content modal-content-demo">
                                 <div class="modal-header">
-                                    <h6 class="modal-title">اضافة قسم</h6><button aria-label="Close" class="close" data-dismiss="modal" type="button"><span aria-hidden="true">&times;</span></button>
+                                    <h6 class="modal-title">{{ trans('invoices.AddSection') }}</h6><button aria-label="Close" class="close" data-dismiss="modal" type="button"><span aria-hidden="true">&times;</span></button>
                                 </div>
                                 <div class="modal-body">
                                     <form action="{{ route('Sections.store') }}" method="post">
                                        @csrf
 
                                         <div class="form-group">
-                                            <label for="exampleInputEmail1">اسم القسم</label>
+                                            <label for="exampleInputEmail1">{{ trans('invoices.NameSection') }}</label>
                                             <input type="text" class="form-control" id="section_name" name="section_name">
                                         </div>
 
                                         <div class="form-group">
-                                            <label for="exampleFormControlTextarea1">ملاحظات</label>
+                                            <label for="exampleFormControlTextarea1">{{ trans('invoices.note') }}</label>
                                             <textarea class="form-control" id="description" name="description" rows="3"></textarea>
                                         </div>
 
                                         <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">اغلاق</button>
-                                            <button type="submit" class="btn btn-success">تاكيد</button>
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">{{ trans('invoices.cancel') }}</button>
+                                            <button type="submit" class="btn btn-success">{{ trans('invoices.submit') }}</button>
                                         </div>
                                     </form>
                                 </div>
@@ -157,7 +157,7 @@
                         <div class="modal-dialog" role="document">
                             <div class="modal-content modal-content-demo">
                                 <div class="modal-header">
-                                    <h6 class="modal-title">تعديل قسم</h6><button aria-label="Close" class="close" data-dismiss="modal" type="button"><span aria-hidden="true">&times;</span></button>
+                                    <h6 class="modal-title">{{ trans('invoices.EditSection') }}</h6><button aria-label="Close" class="close" data-dismiss="modal" type="button"><span aria-hidden="true">&times;</span></button>
                                 </div>
                                 <div class="modal-body">
                                     <form action="{{ url('Sections/update') }}" method="POST">
@@ -166,18 +166,18 @@
                                         <input type="text" class="form-control"  value="" id="id" name="id" hidden>
 
                                         <div class="form-group">
-                                            <label for="exampleInputEmail1">تعديل القسم</label>
+                                            <label for="exampleInputEmail1">{{ trans('invoices.Section') }}</label>
                                             <input type="text" class="form-control"  value="" id="section_name" name="section_name">
                                         </div>
 
                                         <div class="form-group">
-                                            <label for="exampleFormControlTextarea1">تعديل ملاحظات</label>
+                                            <label for="exampleFormControlTextarea1">{{ trans('invoices.note') }}</label>
                                             <textarea class="form-control" id="description"   name="description" rows="3"></textarea>
                                         </div>
 
                                         <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">اغلاق</button>
-                                            <button type="submit" class="btn btn-success">تاكيد</button>
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">{{ trans('invoices.cancel') }}</button>
+                                            <button type="submit" class="btn btn-success">{{ trans('invoices.submit') }}</button>
                                         </div>
                                     </form>
                                 </div>
@@ -189,20 +189,20 @@
                         <div class="modal-dialog" role="document">
                             <div class="modal-content modal-content-demo">
                                 <div class="modal-header">
-                                    <h6 class="modal-title">الحذف قسم</h6><button aria-label="Close" class="close" data-dismiss="modal" type="button"><span aria-hidden="true">&times;</span></button>
+                                    <h6 class="modal-title">{{ trans('invoices.DeleteSection') }}</h6><button aria-label="Close" class="close" data-dismiss="modal" type="button"><span aria-hidden="true">&times;</span></button>
                                 </div>
                                 <div class="modal-body">
                                     <form action="{{ route('Sections.destroy') }}" method="POST">
                                         @method('delete')
                                         @csrf
                                         <div class="modal-body">
-                                            <p>هل انت متاكد من عملية الحذف ؟</p><br>
+                                            <p> {{ trans('invoices.SuccessDelete') }} ?</p><br>
                                         <input type="text" class="form-control"  value="" id="id" name="id" hidden>
                                         <input type="text" class="form-control"  value=""  id="section_name" name="section_name" readonly>
                                         </div>
                                         <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">اغلاق</button>
-                                            <button type="submit" class="btn btn-danger">تاكيد</button>
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal"> {{ trans('invoices.cancel') }} </button>
+                                            <button type="submit" class="btn btn-danger"> {{ trans('invoices.submit') }} </button>
                                         </div>
                                     </form>
                                 </div>

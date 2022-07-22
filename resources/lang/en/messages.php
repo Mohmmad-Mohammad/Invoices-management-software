@@ -15,9 +15,8 @@ return [
 
 
     'SuccessDelete'=> 'تم الحذف  بنجاح ',
-    'SuccessRestored'=>'تم استعادة بنجاح',
-    'SuccessRestored'=>'تم استعادة بنجاح',
-    'SuccessRestored'=>'تم استعادة بنجاح',
+    'SuccessAdd'=>'تم الاضافة بنجاح',
+    'SuccessUpdate'=>'تم تحديث البيانات بنجاح',
     'SuccessRestored'=>'تم استعادة بنجاح',
     'SuccessArchive'=>'تم أرشفة الفاتورة بنجاح  ',
     'SuccessUpdate'=>'تم تحدث حالة الدفع بنجاح  ',

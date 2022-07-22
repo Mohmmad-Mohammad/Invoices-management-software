@@ -3,7 +3,7 @@
     <!--Internal   Notify -->
     <link href="{{ URL::asset('assets/plugins/notify/css/notifIt.css') }}" rel="stylesheet" />
 @section('title')
-    صلاحيات المستخدمين
+{{ trans('invoices.RolesUsers') }}
 @stop
 
 
@@ -13,8 +13,7 @@
 <div class="breadcrumb-header justify-content-between">
     <div class="my-auto">
         <div class="d-flex">
-            <h4 class="content-title mb-0 my-auto">المستخدمين</h4><span class="text-muted mt-1 tx-13 mr-2 mb-0"> /
-                صلاحيات المستخدمين</span>
+            <h4 class="content-title mb-0 my-auto">{{ trans('invoices.Users') }}</h4><span class="text-muted mt-1 tx-13 mr-2 mb-0"> / {{ trans('invoices.RolesUsers') }} </span>
         </div>
     </div>
 </div>
@@ -27,7 +26,7 @@
     <script>
         window.onload = function() {
             notif({
-                msg: " تم اضافة الصلاحية بنجاح",
+                msg: "{{ trans('messages.SuccessDelete') }}",
                 type: "success"
             });
         }
@@ -39,7 +38,7 @@
     <script>
         window.onload = function() {
             notif({
-                msg: " تم تحديث بيانات الصلاحية بنجاح",
+                msg: "{{ trans('messages.SuccessUpdate') }}",
                 type: "success"
             });
         }
@@ -51,7 +50,7 @@
     <script>
         window.onload = function() {
             notif({
-                msg: " تم حذف الصلاحية بنجاح",
+                msg: " {{ trans('messages.SuccessDelete') }}",
                 type: "error"
             });
         }
@@ -68,7 +67,7 @@
                     <div class="col-lg-12 margin-tb">
                         <div class="pull-right">
                             @can('Permission.AddValidity')
-                                <a class="btn btn-primary btn-sm" href="{{ route('roles.create') }}">اضافة</a>
+                                <a class="btn btn-primary btn-sm" href="{{ route('roles.create') }}">{{ trans('invoices.Add') }}</a>
                             @endcan
                         </div>
                     </div>
@@ -82,8 +81,8 @@
                         <thead>
                             <tr>
                                 <th>#</th>
-                                <th>الاسم</th>
-                                <th>العمليات</th>
+                                <th>{{ trans('invoices.Name') }}</th>
+                                <th>{{ trans('invoices.Processes') }}</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -94,12 +93,12 @@
                                     <td>
                                         @can('Permission.ShowValidity')
                                             <a class="btn btn-success btn-sm"
-                                                href="{{ route('roles.show', $role->id) }}">عرض</a>
+                                                href="{{ route('roles.show', $role->id) }}">{{ trans('invoices.Show') }}</a>
                                         @endcan
 
                                         @can('Permission.PermissionEdit')
                                             <a class="btn btn-primary btn-sm"
-                                                href="{{ route('roles.edit', $role->id) }}">تعديل</a>
+                                                href="{{ route('roles.edit', $role->id) }}">{{ trans('invoices.Edit') }}</a>
                                         @endcan
 
                                         @if ($role->name !== 'Admin')
