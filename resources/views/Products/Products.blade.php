@@ -1,7 +1,6 @@
 @extends('layouts.master')
 @section('title')
     المنتجات
-
 @endsection
 @section('css')
 @section('css')
@@ -105,18 +104,18 @@
                                 <td>{{$Product -> description}}</td>
                                 <td></td>
                                     <td>
-                                        <div class="btn-group" role="group"
-                                                  aria-label="Basic example">
-                                            @can('Permission.EditProduct')
-                                            <a data-id="{{$Product -> id}}"  data-name="{{$Product -> Product_name}}" data-section_name="{{$Product->sections->section_name}}" data-description="{{$Product -> description}}"
-                                               data-effect="effect-sign" data-toggle="modal" href="#modaldemo4"
+                                    <div class="btn-group" role="group"
+                                                aria-label="Basic example">
+                                        @can('Permission.EditProduct')
+                                        <a data-id="{{$Product -> id}}"  data-name="{{$Product -> Product_name}}" data-section_name="{{$Product->sections->section_name}}" data-description="{{$Product -> description}}"
+                                            data-effect="effect-sign" data-toggle="modal" href="#modaldemo4"
 
-                                               class="btn btn-outline-primary btn-min-width box-shadow-3 mr-1 mb-1">تعديل <i class="las la-pen"></i></a>
+                                            class="btn btn-outline-primary btn-min-width box-shadow-3 mr-1 mb-1">تعديل <i class="las la-pen"></i></a>
+                                        @endcan
+                                        @can('Permission.DeleteProduct')
+                                        <a data-id="{{$Product -> id}}" data-product_name="{{$Product -> Product_name}}" data-toggle="modal" href="#modaldemo5"
+                                            class="btn btn-outline-danger btn-min-width box-shadow-3 mr-1 mb-1">حذف <i class="las la-trash"></i></a>
                                             @endcan
-                                            @can('Permission.DeleteProduct')
-                                            <a data-id="{{$Product -> id}}" data-product_name="{{$Product -> Product_name}}" data-toggle="modal" href="#modaldemo5"
-                                               class="btn btn-outline-danger btn-min-width box-shadow-3 mr-1 mb-1">حذف <i class="las la-trash"></i></a>
-                                                @endcan
 
 
 
@@ -139,8 +138,6 @@
                                 <div class="modal-body">
                                     <form action="{{ route('Products.store') }}" method="post">
                                         {{ csrf_field() }}
-{{--                                       @csrf--}}
-
                                         <div class="form-group">
                                             <label for="exampleInputEmail1">اسم منتج</label>
                                             <input type="text" class="form-control" id="Product_name" name="Product_name">
