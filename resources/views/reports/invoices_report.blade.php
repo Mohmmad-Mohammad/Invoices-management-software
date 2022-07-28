@@ -73,7 +73,7 @@
 
                             <div class="col-lg-3 mg-t-20 mg-lg-t-0" id="type">
                                 <p class="mg-b-10">{{ trans('invoices.SelectInvoices') }}</p><select class="form-control select2" name="type"
-                                                                                 required>
+                                    required>
                                     <option value="{{ $type ?? 'حدد نوع الفواتير' }}" selected>
                                         {{ $type ?? 'حدد نوع الفواتير' }}
                                     </option>
@@ -132,18 +132,18 @@
                                 <thead>
                                 <tr>
                                     <th class="border-bottom-0">#</th>
-                                    <th class="border-bottom-0">{{ trans('invoicespaid.InvoicesNumber')}}</th>
-                                    <th class="border-bottom-0">{{ trans('invoicespaid.InvoicesNumberTime')}} </th>
-                                    <th class="border-bottom-0">{{ trans('invoicespaid.InvoicesNumberPaidBills')}}</th>
-                                    <th class="border-bottom-0">{{ trans('invoicespaid.Products')}}</th>
-                                    <th class="border-bottom-0">{{ trans('invoicespaid.Sections')}}</th>
-                                    <th class="border-bottom-0">{{ trans('invoicespaid.Discount')}}</th>
-                                    <th class="border-bottom-0">{{ trans('invoicespaid.Rate_VAT')}}</th>
-                                    <th class="border-bottom-0">{{ trans('invoicespaid.Rate_VAT')}}</th>
-                                    <th class="border-bottom-0">{{ trans('invoicespaid.Total')}}</th>
-                                    <th class="border-bottom-0">{{ trans('invoicespaid.Value_Status')}}</th>
-                                    <th class="border-bottom-0">{{ trans('invoicespaid.note')}}</th>
-                                    <th class="border-bottom-0">{{ trans('invoicespaid.Processes')}}</th>
+                                    <th class="border-bottom-0">{{ trans('invoices.InvoicesNumber')}}</th>
+                                    <th class="border-bottom-0">{{ trans('invoices.InvoicesNumberTime')}} </th>
+                                    <th class="border-bottom-0">{{ trans('invoices.InvoicesNumberPaidBills')}}</th>
+                                    <th class="border-bottom-0">{{ trans('invoices.Products')}}</th>
+                                    <th class="border-bottom-0">{{ trans('invoices.Sections')}}</th>
+                                    <th class="border-bottom-0">{{ trans('invoices.Discount')}}</th>
+                                    <th class="border-bottom-0">{{ trans('invoices.Rate_VAT')}}</th>
+                                    <th class="border-bottom-0">{{ trans('invoices.Rate_VAT')}}</th>
+                                    <th class="border-bottom-0">{{ trans('invoices.Total')}}</th>
+                                    <th class="border-bottom-0">{{ trans('invoices.Value_Status')}}</th>
+                                    <th class="border-bottom-0">{{ trans('invoices.note')}}</th>
+                                    <th class="border-bottom-0">{{ trans('invoices.Processes')}}</th>
 
                                 </tr>
                                 </thead>

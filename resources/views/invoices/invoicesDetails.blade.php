@@ -149,7 +149,7 @@
                                                     <thead>
                                                     <tr class="text-dark">
                                                         <th>#</th>
-                                                        <th>{{ trans('invoicespaid.InvoicesNumber')}}</th>
+                                                        <th>{{ trans('invoicespaid.Invoices')}}</th>
                                                         <th>{{ trans('invoicespaid.Products')}}</th>
                                                         <th>{{ trans('invoicespaid.Sections')}}</th>
                                                         <th>{{ trans('invoicespaid.Value_Status')}}</th>

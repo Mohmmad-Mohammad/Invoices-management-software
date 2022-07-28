@@ -16,7 +16,7 @@ class RoleController extends Controller
 
     function __construct()
     {
-        $this->middleware('permission:Permission.Invoices|Permission.ShowValidity|Permission.PaidBills|Permission.BillingList|Permission.PartiallyPaidInvoices|Permission.UnpaidBills', ['only' => ['index']]);
+        $this->middleware('permission:Permission.Invoices|Permission.ShowValidity|Permission.PaidBills|Permission.BillingList|Permission.PartiallyPaidInvoices|Permission.UnpaidBills|Permission.AddUsers|', ['only' => ['index']]);
         $this->middleware('permission:Permission.InvoiceArchive|Permission.reports|Permission.BillingReport|Permission.CustomerReport|Permission.Users|Permission.UserList', ['only' => ['index']]);
         $this->middleware('permission:Permission.UserPermissions|Permission.Settings|Permission.Products|Permission.notifications|Permission.Sections', ['only' => ['index']]);
         $this->middleware('permission:Permission.AddValidity|Permission.AddInvoice|Permission.UpEXCEL|Permission.InvoicePrinting', ['only' => ['create','store']]);

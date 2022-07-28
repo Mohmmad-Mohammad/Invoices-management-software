@@ -55,7 +55,7 @@
 
                         <div class="row">
                             <div class="col">
-                                <label for="inputName" class="control-label">{{ trans('invoices.InvoicesNumber')}}</label>
+                                <label for="inputName" class="control-label">{{ trans('invoices.Invoices')}}</label>
                                 <input type="hidden" name="invoice_id" value="{{ $Invoices->id }}">
                                 <input type="text" class="form-control" id="inputName" name="invoice_number"
                                        title="{{ trans('invoices.PleaseEnter')}}" value="{{$Invoices -> invoice_number}}">

@@ -30,7 +30,7 @@ class PermissionTableSeeder extends Seeder
             'Permission.ArchiveInvoice','Permission.DeleteSection',
             'Permission.UserDelete','Permission.DeleteAttachment',
             'Permission.PermissionDelete','Permission.Products',
-            'Permission.Sections',
+            'Permission.Sections','Permission.AddUsers',
         ];
 
 

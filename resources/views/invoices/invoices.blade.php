@@ -127,7 +127,7 @@
                                             <thead>
                                             <tr>
                                                 <th class="border-bottom-0">#</th>
-                                                <th class="border-bottom-0">{{ trans('invoices.InvoicesNumber')}}</th>
+                                                <th class="border-bottom-0">{{ trans('invoices.Invoices')}}</th>
                                                 <th class="border-bottom-0">{{ trans('invoices.InvoicesNumberTime')}}</th>
                                                 <th class="border-bottom-0">{{ trans('invoices.InvoicesNumberPaidBills')}}</th>
                                                 <th class="border-bottom-0">{{ trans('invoices.Sections')}}</th>
@@ -184,7 +184,7 @@
                                                             class="dropdown-item text-success">{{ trans('invoices.details')}} <i class="text-success las la-eye" ></i></a>
 
                                                         @can('Permission.InvoiceEdit')
-                                                        <a  style="margin: 2px;" href="{{route('edit',$invoice -> id)}}"
+                                                        <a  style="margin: 2px;" href="{{url('/edit',$invoice -> id)}}"
                                                              class="dropdown-item text-primary"  >{{ trans('invoices.Edit')}} <i class="text-primary las la-pen"></i></a>
                                                         @endcan
                                                         @can('Permission.InvoiceDelete')

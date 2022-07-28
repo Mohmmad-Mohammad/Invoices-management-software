@@ -42,7 +42,7 @@
             <div class="card">
                 <div class="card-header pb-0">
                     <div class="col-sm-1 col-md-2">
-                        @can('اضافة مستخدم')
+                        @can('Permission.AddUsers')
                             <a class="btn btn-primary btn-sm" href="{{ route('users.create') }}">{{ trans('invoices.AddUser') }}</a>
                         @endcan
                     </div>
