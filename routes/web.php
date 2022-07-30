@@ -28,7 +28,7 @@ Route::resource('Archive', 'InvoiceArchiveController');
 #################################################################
 
 ################################## Route Delete #########################
-Route::post('/delete_file/','InvoicesDetailsController@destroy')->name('delete_file');
+Route::post('/delete_file','InvoicesDetailsController@destroy')->name('delete_file');
 
 Route::post('invoices/delete/','InvoicesController@destroy')->name('invoices.destroy');
 
@@ -65,11 +65,11 @@ Route::get('/Status_show/{id}', 'InvoicesController@show')->name('Status_show');
 
 Route::post('/Status_Update/{id}', 'InvoicesController@Status_Update')->name('Status_Update');
 
-Route::get('Invoice_Paid','InvoicesController@Invoice_Paid');
+Route::get('Invoice_Paid','InvoicesController@Invoice_Paid')->name('Invoice_Paid');
 
-Route::get('Invoice_UnPaid','InvoicesController@Invoice_UnPaid');
+Route::get('Invoice_UnPaid','InvoicesController@Invoice_UnPaid')->name('Invoice_UnPaid');
 
-Route::get('Invoice_Partial','InvoicesController@Invoice_Partial');
+Route::get('Invoice_Partial','InvoicesController@Invoice_Partial')->name('Invoice_Partial');
 
 Route::get('Print_invoice/{id}','InvoicesController@Print_invoice');
 
@@ -77,7 +77,7 @@ Route::get('export_invoices','InvoicesController@export');
 
 Route::get('changeStatus/{id}','UserController@changeStatus') -> name('changeStatus');
 
-Route::get('invoices_report', 'InvoicesReportController@index');
+Route::get('invoices_report', 'InvoicesReportController@index')->name('invoices_report');
 
 Route::post('Search_invoices', 'InvoicesReportController@Search_invoices');
 
