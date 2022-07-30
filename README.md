@@ -2,8 +2,7 @@
 # Invoice creation software
 
 =======
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="p" width="400"></a></p>
-=======
+
 <p align="center">
 <a href="https://laravel.com" target="_blank"><img src="public/assets/img/‏‏لقطة%20الشاشة%20(18).png"></a>
 <a href="https://travis-ci.org/laravel/framework"><img src="public/assets/img/‏‏لقطة%20الشاشة%20(16).png" alt="Build Status"></a>
