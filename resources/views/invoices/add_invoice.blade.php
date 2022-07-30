@@ -32,6 +32,18 @@
     @include('alerts.error')
     @include('alerts.delete')
     @include('alerts.Add')
+
+
+    @if (session()->has('Success'))
+    <script>
+        window.onload = function() {
+            notif({
+                msg: "{{trans('messages.Success')}}",
+                type: "success"
+            })
+        }
+    </script>
+@endif
     <!-- row -->
     <div class="row">
         <div class="col-lg-12 col-md-12">

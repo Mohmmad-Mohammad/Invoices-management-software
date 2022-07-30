@@ -11,19 +11,19 @@ class Invoice extends Model
     protected $fillable = [
         'invoice_number',
         'invoice_Date',
-        'Due_date',
+        'due_date',
         'product',
         'section_id',
-        'Amount_collection',
-        'Amount_Commission',
-        'Discount',
-        'Value_VAT',
-        'Rate_VAT',
-        'Total',
-        'Status',
-        'Value_Status',
+        'amount_collection',
+        'amount_Commission',
+        'discount',
+        'value_VAT',
+        'rate_VAT',
+        'total',
+        'status',
+        'value_status',
         'note',
-        'Payment_Date',
+        'payment_Date',
     ];
 
     protected $dates = ['deleted_at'];
@@ -35,18 +35,18 @@ class Invoice extends Model
         public function scopeSelectExcel($query){
         return $query-> select( 'invoice_number',
             'invoice_Date',
-            'Due_date',
+            'due_date',
             'product',
             'section_id',
-            'Amount_collection',
-            'Amount_Commission',
-            'Discount',
-            'Value_VAT',
-            'Rate_VAT',
-            'Total',
-            'Status',
-            'Value_Status',
+            'amount_collection',
+            'amount_Commission',
+            'discount',
+            'value_VAT',
+            'rate_VAT',
+            'total',
+            'status',
+            'value_status',
             'note',
-            'Payment_Date')->get();
+            'payment_date')->get();
         }
 }

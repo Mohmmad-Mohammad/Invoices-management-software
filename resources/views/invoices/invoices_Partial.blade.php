@@ -56,12 +56,7 @@
         <!--div-->
         <div class="col-xl-12">
             <div class="card mg-b-20">
-                <div class="card-header pb-0">
-                    <div class="d-flex justify-content-between">
-                        <a href="invoices/create" class="modal-effect btn btn-sm btn-primary" style="color:white"><i
-                                class="fas fa-plus"></i>&nbsp; {{ trans('invoices.InvoicesAdd')}}</a>
-                    </div>
-                </div>
+        
                 <div class="card-body">
                     <div class="table-responsive">
                         <table id="example1" class="table key-buttons text-md-nowrap" data-page-length='50'>
@@ -94,22 +89,22 @@
                                     <td>{{ $i }}</td>
                                     <td>{{ $invoice->invoice_number }} </td>
                                     <td>{{ $invoice->invoice_Date }}</td>
-                                    <td>{{ $invoice->Due_date }}</td>
+                                    <td>{{ $invoice->due_date }}</td>
                                     <td>{{ $invoice->product }}</td>
                                     <td><a
                                             href="{{ url('InvoicesDetails') }}/{{ $invoice->id }}">{{ $invoice->section->section_name }}</a>
                                     </td>
-                                    <td>{{ $invoice->Discount }}</td>
-                                    <td>{{ $invoice->Rate_VAT }}</td>
-                                    <td>{{ $invoice->Value_VAT }}</td>
-                                    <td>{{ $invoice->Total }}</td>
+                                    <td>{{ $invoice->discount }}</td>
+                                    <td>{{ $invoice->rate_VAT }}</td>
+                                    <td>{{ $invoice->value_VAT }}</td>
+                                    <td>{{ $invoice->total }}</td>
                                     <td>
-                                        @if ($invoice->Value_Status == 1)
-                                            <span class="text-success">{{ $invoice->Status }}</span>
-                                        @elseif($invoice->Value_Status == 2)
-                                            <span class="text-danger">{{ $invoice->Status }}</span>
+                                        @if ($invoice->value_Status == 1)
+                                            <span class="text-success">{{ $invoice->status }}</span>
+                                        @elseif($invoice->value_Status == 2)
+                                            <span class="text-danger">{{ $invoice->status }}</span>
                                         @else
-                                            <span class="text-warning">{{ $invoice->Status }}</span>
+                                            <span class="text-warning">{{ $invoice->status }}</span>
                                         @endif
 
                                     </td>

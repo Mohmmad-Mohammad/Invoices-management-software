@@ -9,7 +9,7 @@ class Product extends Model
     protected $table = 'products';
     protected $fillable = [
         'description',
-        'Product_name',
+        'product_name',
         'section_id',
         'created_at',
         'updated_at',
@@ -19,7 +19,7 @@ class Product extends Model
     public function scopeSelection($query){
         return $query ->select( 'id',
             'description',
-            'Product_name',
+            'product_name',
             'section_id'
 
         );

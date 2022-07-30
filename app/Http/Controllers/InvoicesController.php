@@ -42,21 +42,21 @@ class InvoicesController extends Controller
             $Invoices = Invoice::all();
             if (!$Invoices)
                 return redirect('/invoices/create')->with(['error' => 'هذا الفاتورة موجود مسبقاً ']);
-//            DB::beginTransaction();
+           DB::beginTransaction();
             Invoice::create([
                 'invoice_number' => $request->invoice_number,
                 'invoice_Date' => $request->invoice_Date,
-                'Due_date' => $request->Due_date,
+                'due_date' => $request->Due_date,
                 'product' => $request->product,
                 'section_id' => $request->Section,
-                'Amount_collection' => $request->Amount_collection,
-                'Amount_Commission' => $request->Amount_Commission,
-                'Discount' => $request->Discount,
-                'Value_VAT' => $request->Value_VAT,
-                'Rate_VAT' => $request->Rate_VAT,
-                'Total' => $request->Total,
-                'Status' => 'غير مدفوعة',
-                'Value_Status' => 2,
+                'amount_collection' => $request->Amount_collection,
+                'amount_Commission' => $request->Amount_Commission,
+                'discount' => $request->Discount,
+                'value_VAT' => $request->Value_VAT,
+                'rate_VAT' => $request->Rate_VAT,
+                'total' => $request->Total,
+                'status' => 'غير مدفوعة',
+                'value_status' => 2,
                 'note' => $request->note,
             ]);
 
@@ -65,9 +65,9 @@ class InvoicesController extends Controller
                 'id_Invoice' => $invoice_id,
                 'invoice_number' => $request->invoice_number,
                 'product' => $request->product,
-                'Sections' => $request->Section,
-                'Status' => 'غير مدفوعة',
-                'Value_Status' => 2,
+                'sections' => $request->Section,
+                'status' => 'غير مدفوعة',
+                'value_status' => 2,
                 'note' => $request->note,
                 'user' => (Auth::user()->name),
             ]);
@@ -80,14 +80,13 @@ class InvoicesController extends Controller
                 $attachments = new Invoices_attachment();
                 $attachments->file_name = $file_name;
                 $attachments->invoice_number = $invoice_number;
-                $attachments->Created_by = Auth::user()->name;
+                $attachments->created_by = Auth::user()->name;
                 $attachments->invoice_id = $invoice_id;
                 $attachments->save();
                 // move pic
                 $imageName = $request->pic->getClientOriginalName();
                 $request->pic->move(public_path('Attachments/' . $invoice_number), $imageName);
             }
-
             $user = User::get();
             $invoices = Invoice::latest()->first();
 //            $user ->notify(new \App\Notifications\Add_invoice($invoices));
@@ -95,7 +94,7 @@ class InvoicesController extends Controller
             return redirect('/invoices/create')->with(['add' => 'تم اضافة الفاتورة']);
         }catch (\Exception $ex){
             return $ex;
-//            DB::rollback();
+           DB::rollback();
             return redirect('/invoices/create')->with(['error' => 'هناك خطأ حاول فيما بعد']);
         }
     }
@@ -115,15 +114,15 @@ class InvoicesController extends Controller
         Invoice::findOrFail($request->invoice_id)->update([
             'invoice_number' => $request->invoice_number,
             'invoice_Date' => $request->invoice_Date,
-            'Due_date' => $request->Due_date,
+            'Due_date' => $request->due_date,
             'product' => $request->product,
-            'section_id' => $request->Section,
-            'Amount_collection' => $request->Amount_collection,
-            'Amount_Commission' => $request->Amount_Commission,
-            'Discount' => $request->Discount,
-            'Value_VAT' => $request->Value_VAT,
-            'Rate_VAT' => $request->Rate_VAT,
-            'Total' => $request->Total,
+            'section_id' => $request->section,
+            'Amount_collection' => $request->amount_collection,
+            'Amount_Commission' => $request->amount_Commission,
+            'Discount' => $request->discount,
+            'Value_VAT' => $request->value_VAT,
+            'Rate_VAT' => $request->rate_VAT,
+            'Total' => $request->total,
             'note' => $request->note,
             'user' => (Auth::user()->name),
             'Status' => 'غير مدفوعة',
@@ -138,7 +137,7 @@ class InvoicesController extends Controller
     }
 
     public function getProducts($id){
-        $Products = DB::table("products")->where("section_id",$id)->pluck("Product_name",'id');
+        $Products = DB::table("products")->where("section_id",$id)->pluck("product_name",'id');
         return json_encode($Products);
     }
 
@@ -175,38 +174,38 @@ class InvoicesController extends Controller
     $invoices = Invoice::findOrFail($id);
     if ($request->Status === 'مدفوعة') {
         $invoices->update([
-            'Value_Status' => 1,
-            'Status' => $request->Status,
-            'Payment_Date' => $request->Payment_Date,
+            'value_status' => 1,
+            'status' => $request->Status,
+            'payment_Date' => $request->Payment_Date,
         ]);
 
         Invoices_detail::create([
             'id_Invoice' => $request->invoice_id,
             'invoice_number' => $request->invoice_number,
             'product' => $request->product,
-            'Sections' => $request->Section,
-            'Status' => $request->Status,
-            'Value_Status' => 1,
+            'sections' => $request->Section,
+            'status' => $request->Status,
+            'value_status' => 1,
             'note' => $request->note,
-            'Payment_Date' => $request->Payment_Date,
+            'payment_Date' => $request->Payment_Date,
             'user' => (Auth::user()->name),
         ]);
 
         } else {
         $invoices->update([
-            'Value_Status' => 3,
-            'Status' => $request->Status,
-            'Payment_Date' => $request->Payment_Date,
+            'value_status' => 3,
+            'status' => $request->Status,
+            'payment_Date' => $request->payment_Date,
         ]);
         Invoices_detail::create([
             'id_Invoice' => $request->invoice_id,
             'invoice_number' => $request->invoice_number,
             'product' => $request->product,
-            'Sections' => $request->Section,
-            'Status' => $request->Status,
-            'Value_Status' => 3,
+            'sections' => $request->Section,
+            'status' => $request->Status,
+            'value_status' => 3,
             'note' => $request->note,
-            'Payment_Date' => $request->Payment_Date,
+            'payment_Date' => $request->Payment_Date,
             'user' => (Auth::user()->name),
         ]);
     }
@@ -217,19 +216,19 @@ class InvoicesController extends Controller
 
     public function Invoice_Paid()
     {
-        $invoices = Invoice::where('Value_Status', 1)->get();
+        $invoices = Invoice::where('value_Status', 1)->get();
         return view('invoices.invoices_paid',compact('invoices'));
     }
 
     public function Invoice_unPaid()
     {
-        $invoices = Invoice::where('Value_Status',2)->get();
+        $invoices = Invoice::where('value_Status',2)->get();
         return view('invoices.invoices_unpaid',compact('invoices'));
     }
 
     public function Invoice_Partial()
     {
-        $invoices = Invoice::where('Value_Status',3)->get();
+        $invoices = Invoice::where('value_Status',3)->get();
         return view('invoices.invoices_Partial',compact('invoices'));
     }
 

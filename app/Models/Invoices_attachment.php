@@ -7,5 +7,5 @@ use Illuminate\Database\Eloquent\Model;
 class Invoices_attachment extends Model
 {
     protected $table = "invoices_attachments";
-    protected $fillable = ['file_name','invoice_number','invoice_id','Created_by'];
+    protected $fillable = ['file_name','invoice_number','invoice_id','created_by'];
 }

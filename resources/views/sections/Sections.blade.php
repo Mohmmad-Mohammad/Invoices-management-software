@@ -90,9 +90,9 @@
                             <tr>
                                 <td>{{$nambur}}</td>
                                 <td>{{$Section -> section_name}}</td>
-                                <td>{{$Section -> Created_by}}</td>
+                                <td>{{$Section -> created_by}}</td>
                                 <td>{{$Section -> description}}</td>
-                                <td>{{$Section -> created_at}}</td>
+                                <td>{{$Section -> Created_at}}</td>
                                 <td>{{$Section -> updated_at}}</td>
                                     <td>
                                         <div class="btn-group" role="group"

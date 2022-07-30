@@ -24,7 +24,7 @@ class ProductsRequest extends FormRequest
     public function rules()
     {
         return [
-            'Product_name'=>'required|max:225|unique:Products,Product_name,'.$this -> id,
+            'product_name'=>'required|max:225|unique:products,product_name,'.$this -> id,
             'section_id'=>'required|',
 //            'description'=>'',
             //
@@ -33,8 +33,8 @@ class ProductsRequest extends FormRequest
     public function messages(){
        return [
            'section_id.required'=>'اسم القسم مطلوب',
-           'Product_name.required'=>'اسم المنتج مطلوب',
-           'Product_name.unique'=>' اسم المنتج موجود مسبقاً',
+           'product_name.required'=>'اسم المنتج مطلوب',
+           'product_name.unique'=>' اسم المنتج موجود مسبقاً',
            'description.required'=>'وصف المنتج مطلوب',
         ];
     }

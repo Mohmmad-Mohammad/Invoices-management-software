@@ -88,42 +88,44 @@
                                                 <table class="table table-striped" style="text-align:center">
                                                     <tbody>
                                                     <tr>
-                                                        <th class="border-bottom-0">{{ trans('invoicespaid.InvoicesNumber')}}</th>
-                                                        <th class="border-bottom-0">{{ trans('invoicespaid.InvoicesNumberTime')}} </th>
-                                                        <th class="border-bottom-0">{{ trans('invoicespaid.InvoicesNumberPaidBills')}}</th>
-                                                        <th class="border-bottom-0">{{ trans('invoicespaid.Sections')}}</th>
-                                                        <th class="border-bottom-0">{{ trans('invoicespaid.Products')}}</th>
-                                                        <th class="border-bottom-0">{{ trans('invoicespaid.Discount')}}</th>
-                                                        <th class="border-bottom-0">{{ trans('invoicespaid.Rate_VAT')}}</th>
-                                                        <th class="border-bottom-0">{{ trans('invoicespaid.Rate_VAT')}}</th>
-                                                        <th class="border-bottom-0">{{ trans('invoicespaid.Total')}}</th>
-                                                        <th class="border-bottom-0">{{ trans('invoicespaid.Value_Status')}}</th>
-                                                        <th class="border-bottom-0">{{ trans('invoicespaid.note')}}</th>
+                                                        <th class="border-bottom-0">{{ trans('invoices.Invoices')}}</th>
+                                                        <th class="border-bottom-0">{{ trans('invoices.InvoicesNumberTime')}} </th>
+                                                        <th class="border-bottom-0">{{ trans('invoices.InvoicesNumberPaidBills')}}</th>
+                                                        <th class="border-bottom-0">{{ trans('invoices.Sections')}}</th>
+                                                        <th class="border-bottom-0">{{ trans('invoices.Products')}}</th>
+                                                        <th class="border-bottom-0">{{ trans('invoices.AmountCollection')}}</th>
+                                                        <th class="border-bottom-0">{{ trans('invoices.AmountCommission')}}</th>
+                                                        <th class="border-bottom-0">{{ trans('invoices.Discount')}}</th>
+                                                        <th class="border-bottom-0">{{ trans('invoices.Rate_VAT')}}</th>
+                                                        <th class="border-bottom-0">{{ trans('invoices.Value_VAT')}}</th>
+                                                        <th class="border-bottom-0">{{ trans('invoices.Total')}}</th>
+                                                        <th class="border-bottom-0">{{ trans('invoices.Value_Status')}}</th>
+                                                        <th class="border-bottom-0">{{ trans('invoices.note')}}</th>
                                                     </tr>
 
                                                     <tr>
-                                                        <td>{{ $invoices -> invoice_number }}</td>
+                                                        <td>{{ $invoices ->invoice_number }}</td>
                                                         <td>{{ $invoices->invoice_Date }}</td>
-                                                        <td>{{ $invoices->Due_date }}</td>
+                                                        <td>{{ $invoices->due_date }}</td>
                                                         <td>{{ $invoices->Section->section_name }}</td>
                                                         <td>{{ $invoices->product }}</td>
-                                                        <td>{{ $invoices->Amount_collection }}</td>
-                                                        <td>{{ $invoices->Amount_Commission }}</td>
-                                                        <td>{{ $invoices->Discount }}</td>
-                                                        <td>{{ $invoices->Rate_VAT }}</td>
-                                                        <td>{{ $invoices->Value_VAT }}</td>
-                                                        <td>{{ $invoices->Total }}</td>
-                                                        @if ($invoices->Value_Status == 1)
+                                                        <td>{{ $invoices->amount_collection }}</td>
+                                                        <td>{{ $invoices->amount_Commission }}</td>
+                                                        <td>{{ $invoices->discount }}</td>
+                                                        <td>{{ $invoices->rate_VAT }}</td>
+                                                        <td>{{ $invoices->value_VAT }}</td>
+                                                        <td>{{ $invoices->total }}</td>
+                                                        @if ($invoices->value_status == 1)
                                                             <td><span
-                                                            class="badge badge-pill badge-success">{{ $invoices->Status }}</span>
+                                                            class="badge badge-pill badge-success">{{ $invoices->status }}</span>
                                                             </td>
-                                                        @elseif($invoices->Value_Status ==2)
+                                                        @elseif($invoices->value_status ==2)
                                                             <td><span
-                                                            class="badge badge-pill badge-danger">{{ $invoices->Status }}</span>
+                                                            class="badge badge-pill badge-danger">{{ $invoices->status }}</span>
                                                             </td>
                                                         @else
                                                             <td><span
-                                                            class="badge badge-pill badge-warning">{{ $invoices->Status }}</span>
+                                                            class="badge badge-pill badge-warning">{{ $invoices->status }}</span>
                                                             </td>
                                                         @endif
                                                         <td>{{ $invoices->note }}</td>
@@ -145,18 +147,18 @@
                                         <div class="tab-pane" id="tab5">
                                             <div class="table-responsive mt-15">
                                                 <table class="table center-aligned-table mb-0 table-hover"
-                                                       style="text-align:center">
+                                                    style="text-align:center">
                                                     <thead>
                                                     <tr class="text-dark">
                                                         <th>#</th>
-                                                        <th>{{ trans('invoicespaid.Invoices')}}</th>
-                                                        <th>{{ trans('invoicespaid.Products')}}</th>
-                                                        <th>{{ trans('invoicespaid.Sections')}}</th>
-                                                        <th>{{ trans('invoicespaid.Value_Status')}}</th>
-                                                        <th> {{ trans('invoicespaid.PaymentDate')}}</th>
-                                                        <th>{{ trans('invoicespaid.note')}}</th>
-                                                        <th>{{ trans('invoicespaid.Created_at')}} </th>
-                                                        <th>{{ trans('invoicespaid.User')}}</th>
+                                                        <th>{{ trans('invoices.Invoices')}}</th>
+                                                        <th>{{ trans('invoices.Products')}}</th>
+                                                        <th>{{ trans('invoices.Sections')}}</th>
+                                                        <th>{{ trans('invoices.Value_Status')}}</th>
+                                                        <th> {{ trans('invoices.PaymentDate')}}</th>
+                                                        <th>{{ trans('invoices.note')}}</th>
+                                                        <th>{{ trans('invoices.Created_at')}} </th>
+                                                        <th>{{ trans('invoices.Usercreate')}}</th>
                                                     </tr>
                                                     </thead>
                                                     <tbody>
@@ -168,20 +170,20 @@
                                                             <td>{{ $x->invoice_number }}</td>
                                                             <td>{{ $x->product }}</td>
                                                             <td>{{ $invoices->Section->section_name }}</td>
-                                                            @if ($x->Value_Status == 1)
+                                                            @if ($x->value_status == 1)
                                                                 <td><span
-                                                                        class="badge badge-pill badge-success">{{ $x->Status }}</span>
+                                                                        class="badge badge-pill badge-success">{{ $x->status }}</span>
                                                                 </td>
-                                                            @elseif($x->Value_Status ==2)
+                                                            @elseif($x->value_status ==2)
                                                                 <td><span
-                                                                        class="badge badge-pill badge-danger">{{ $x->Status }}</span>
+                                                                        class="badge badge-pill badge-danger">{{ $x->status }}</span>
                                                                 </td>
                                                             @else
                                                                 <td><span
-                                                                        class="badge badge-pill badge-warning">{{ $x->Status }}</span>
+                                                                     class="badge badge-pill badge-warning">{{ $x->status }}</span>
                                                                 </td>
                                                             @endif
-                                                            <td>{{ $x->Payment_Date }}</td>
+                                                            <td>{{ $x->payment_date }}</td>
                                                             <td>{{ $x->note }}</td>
                                                             <td>{{ $x->created_at }}</td>
                                                             <td>{{ $x->user }}</td>
@@ -189,8 +191,6 @@
                                                     @endforeach
                                                     </tbody>
                                                 </table>
-
-
                                             </div>
                                         </div>
                                         <div class="tab-pane" id="tab6">
@@ -221,7 +221,7 @@
 
                                                 <div class="table-responsive mt-15">
                                                     <table class="table center-aligned-table mb-0 table table-hover"
-                                                           style="text-align:center">
+                                                        style="text-align:center">
                                                         <thead>
                                                         <tr class="text-dark">
                                                             <th scope="col">#</th>
@@ -240,7 +240,7 @@
                                                                 <td>{{ $i }}</td>
                                                                 <td>{{ $attachment->file_name }}</td>
                                                                 <td>{{ $attachment->invoice_number }}</td>
-                                                                <td>{{ $attachment->Created_by }}</td>
+                                                                <td>{{ $attachment->created_by }}</td>
                                                                 <td>{{ $attachment->created_at }}</td>
                                                                 <td colspan="2">
 

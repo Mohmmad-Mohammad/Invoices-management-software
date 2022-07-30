@@ -11,12 +11,12 @@ class Invoices_detail extends Model
         'id_Invoice',
         'invoice_number',
         'product',
-        'Sections',
-        'Status',
-        'Value_Status',
+        'sections',
+        'status',
+        'value_status',
         'note',
         'user',
-        'Payment_Date',
+        'payment_date',
     ];
 
 }

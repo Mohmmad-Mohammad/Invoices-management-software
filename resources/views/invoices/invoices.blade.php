@@ -154,25 +154,25 @@
                                                 <td>{{$number}}</td>
                                                 <td>{{$invoice -> invoice_number}}</td>
                                                 <td>{{$invoice -> invoice_Date}}</td>
-                                                <td>{{$invoice -> Due_date}}</td>
+                                                <td>{{$invoice -> due_date}}</td>
                                                 <td>{{$invoice -> section-> section_name}}</td>
                                                 <td>{{$invoice -> product}}</td>
-                                                <td>{{$invoice -> Amount_collection}}</td>
-                                                <td>{{$invoice -> Amount_Commission}}</td>
-                                                <td>{{$invoice -> Discount}}</td>
-                                                <td>{{$invoice -> Rate_VAT}}</td>
+                                                <td>{{$invoice -> amount_collection}}</td>
+                                                <td>{{$invoice -> amount_Commission}}</td>
+                                                <td>{{$invoice -> discount}}</td>
+                                                <td>{{$invoice -> rate_VAT}}</td>
                                                 <td>{{$invoice -> note}}</td>
-                                                <td>{{$invoice -> Value_VAT}}</td>
+                                                <td>{{$invoice -> value_VAT}}</td>
                                                 <td>
-                                                    @if($invoice ->Value_Status == 1 )
-                                                        <span class="text-success">{{$invoice -> Status}}</span>
-                                                    @elseif($invoice ->Value_Status == 2)
-                                                        <span class="text-danger">{{$invoice -> Status}}</span>
+                                                    @if($invoice ->value_status == 1 )
+                                                        <span class="text-success">{{$invoice -> status}}</span>
+                                                    @elseif($invoice ->value_status == 2)
+                                                        <span class="text-danger">{{$invoice -> status}}</span>
                                                     @else
-                                                        <span class="text-warning">{{$invoice -> Status}}</span>
+                                                        <span class="text-warning">{{$invoice -> status}}</span>
                                                     @endif
                                                 </td>
-                                                <td>{{$invoice -> Total}}</td>
+                                                <td>{{$invoice -> total}}</td>
                                                 <td>
                                                     <div class="dropdown">
                                                     <button aria-expanded="false" aria-haspopup="true"

@@ -83,6 +83,7 @@ return [
     'Search'=>'بحث',
     'Section'=>'القسم',
     'AddUser'=>'اضافة مستخدم',
+    'Usercreate'=>' المضيف',
     'Users'=>'المستخدمين',
     'Back'=>'رجوع',
     'NameUser'=>'اسم المستخدم',

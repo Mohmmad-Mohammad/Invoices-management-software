@@ -47,7 +47,7 @@ class ProductsController extends Controller
 //            DB::beginTransaction();
             Product::create([
                 'section_id'=>$request->section_id,
-                'Product_name'=>$request->Product_name,
+                'product_name'=>$request->product_name,
                 'description'=>$request->description,
 //                'Created_by'=>(Auth::user()->name),
             ]);
@@ -96,7 +96,7 @@ class ProductsController extends Controller
             $section_id = Section::where('section_name',$request->section_name)->first()->id;
             $Products = Product::findOrFail($request->id);
             $Products->update([
-                'Product_name'=>$request->Product_name,
+                'product_name'=>$request->product_name,
                 'description'=>$request->description,
                 'section_id'=>$section_id,
             ]);

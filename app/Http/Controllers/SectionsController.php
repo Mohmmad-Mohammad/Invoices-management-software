@@ -40,6 +40,7 @@ class SectionsController extends Controller
      */
     public function store(SectionsRequest $request)
     {
+
         try {
             $sectione = Section::Selection();
             if (!$sectione)
@@ -48,7 +49,7 @@ class SectionsController extends Controller
             Section::create([
             'section_name'=>$request->section_name,
             'description'=>$request->description,
-            'Created_by'=>(Auth::user()->name),
+            'created_by'=>(Auth::user()->name),
         ]);
             DB::commit();
             return redirect()->back()->with(['add' => 'تم اضافة القسم']);

@@ -47,7 +47,7 @@
                             <div class="col">
                                 <label>تاريخ الاستحقاق</label>
                                 <input class="form-control fc-datepicker" name="Due_date" placeholder="YYYY-MM-DD"
-                                       type="text" value="{{ $invoices->Due_date }}" required readonly>
+                                       type="text" value="{{ $invoices->due_date }}" required readonly>
                             </div>
 
                         </div>
@@ -78,7 +78,7 @@
                                 <label for="inputName" class="control-label">مبلغ التحصيل</label>
                                 <input type="text" class="form-control" id="inputName" name="Amount_collection"
                                        oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
-                                       value="{{ $invoices->Amount_collection }}" readonly>
+                                       value="{{ $invoices->amount_collection }}" readonly>
                             </div>
                         </div>
 
@@ -91,22 +91,22 @@
                                 <label for="inputName" class="control-label">مبلغ العمولة</label>
                                 <input type="text" class="form-control form-control-lg" id="Amount_Commission"
                                        oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
-                                       value="{{ $invoices->Amount_Commission }}" required readonly>
+                                       value="{{ $invoices->amount_Commission }}" required readonly>
                             </div>
 
                             <div class="col">
                                 <label for="inputName" class="control-label">الخصم</label>
                                 <input type="text" class="form-control form-control-lg" id="Discount" name="Discount"
                                        oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
-                                       value="{{ $invoices->Discount }}" required readonly>
+                                       value="{{ $invoices->discount }}" required readonly>
                             </div>
 
                             <div class="col">
                                 <label for="inputName" class="control-label">نسبة ضريبة القيمة المضافة</label>
                                 <select name="Rate_VAT" id="Rate_VAT" class="form-control" onchange="myFunction()" readonly>
                                     <!--placeholder-->
-                                    <option value=" {{ $invoices->Rate_VAT }}">
-                                    {{ $invoices->Rate_VAT }}
+                                    <option value=" {{ $invoices->rate_VAT }}">
+                                    {{ $invoices->rate_VAT }}
                                 </select>
                             </div>
 
@@ -118,13 +118,13 @@
                             <div class="col">
                                 <label for="inputName" class="control-label">قيمة ضريبة القيمة المضافة</label>
                                 <input type="text" class="form-control" id="Value_VAT" name="Value_VAT"
-                                       value="{{ $invoices->Value_VAT }}" readonly>
+                                       value="{{ $invoices->value_VAT }}" readonly>
                             </div>
 
                             <div class="col">
                                 <label for="inputName" class="control-label">الاجمالي شامل الضريبة</label>
                                 <input type="text" class="form-control" id="Total" name="Total" readonly
-                                       value="{{ $invoices->Total }}">
+                                       value="{{ $invoices->total }}">
                             </div>
                         </div>
 

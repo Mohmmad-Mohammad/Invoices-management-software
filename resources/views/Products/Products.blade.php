@@ -108,13 +108,13 @@
                                     <div class="btn-group" role="group"
                                                 aria-label="Basic example">
                                         @can('Permission.EditProduct')
-                                        <a data-id="{{$Product -> id}}"  data-name="{{$Product -> Product_name}}" data-section_name="{{$Product->sections->section_name}}" data-description="{{$Product -> description}}"
+                                        <a data-id="{{$Product -> id}}"  data-name="{{$Product -> product_name}}" data-section_name="{{$Product->sections->section_name}}" data-description="{{$Product -> description}}"
                                             data-effect="effect-sign" data-toggle="modal" href="#modaldemo4"
 
                                             class="btn btn-outline-primary btn-min-width box-shadow-3 mr-1 mb-1">تعديل <i class="las la-pen"></i></a>
                                         @endcan
                                         @can('Permission.DeleteProduct')
-                                        <a data-id="{{$Product -> id}}" data-product_name="{{$Product -> Product_name}}" data-toggle="modal" href="#modaldemo5"
+                                        <a data-id="{{$Product -> id}}" data-product_name="{{$Product -> product_name}}" data-toggle="modal" href="#modaldemo5"
                                             class="btn btn-outline-danger btn-min-width box-shadow-3 mr-1 mb-1">حذف <i class="las la-trash"></i></a>
                                             @endcan
 
@@ -141,7 +141,7 @@
                                         {{ csrf_field() }}
                                         <div class="form-group">
                                             <label for="exampleInputEmail1">{{ trans('invoices.NameProduct') }}</label>
-                                            <input type="text" class="form-control" id="Product_name" name="Product_name">
+                                            <input type="text" class="form-control" id="product_name" name="product_name">
                                         </div>
                                         <select class="form-control" id="section_id" name="section_id" required>
                                             <option value="" selected disabled>--{{ trans('invoices.SelectSection') }}--</option>
